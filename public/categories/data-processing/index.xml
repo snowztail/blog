@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Processing on SnowzTail: Share Wonder</title>
+    <link>https://snowztail.com/categories/data-processing/</link>
+    <description>Recent content in Data Processing on SnowzTail: Share Wonder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 09 May 2020 00:37:42 +0000</lastBuildDate>
+    
+	<atom:link href="https://snowztail.com/categories/data-processing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>数据处理 1 - 稀疏回归和贪心算法</title>
+      <link>https://snowztail.com/dp-1-sparse-regression-and-greedy-algorithms/</link>
+      <pubDate>Sat, 09 May 2020 00:37:42 +0000</pubDate>
+      
+      <guid>https://snowztail.com/dp-1-sparse-regression-and-greedy-algorithms/</guid>
+      <description>稀疏回归 稀疏回归 (sparse regression) 是一种通过求解欠定方程的稀疏解从训练样本 \(x\) 和结果 \(y\) 中找出它们的对应关系 \(f\), 使得 \[y_i \approx f(x_i), \quad x_i \in \mathbb{R}^n, i = 1,\dots,m\] 其中 \(n\) 为参数的个数, \(m\) 为</description>
+    </item>
+    
+  </channel>
+</rss>

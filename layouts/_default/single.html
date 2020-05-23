@@ -1,0 +1,112 @@
+{{ define "content" -}}
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">{{ .Title }}</h1>
+        <div class="post-meta">
+            <a itemprop="name" href="{{.Site.BaseURL }}"
+                rel="author">{{ if isset .Params "author" }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}</a>
+            <span class="post-time">
+                on <time datetime={{.Date.Format (.Site.Params.dateFormatToUse | default "2006-01-02") }}
+                    itemprop="datePublished">{{ .Date.Format (.Site.Params.dateFormatToUse | default "January 2, 2006") }}</time>
+            </span>
+            in
+            {{ with .Params.categories -}}
+            <!-- <i class="fa fa-folder"></i> -->
+            <span class="post-category">
+                {{ range . }}
+                {{- $name := . -}}
+                {{- with $.Site.GetPage "taxonomy" (printf "categories/%s" $name) | default ($.Site.GetPage "taxonomy" (printf "categories/%s" ($name | urlize))) -}}
+                <a href="{{ .Permalink }}"> {{ $name }},</a>
+                {{ end -}}
+                {{ end }}
+            </span>
+            {{- end }}
+            <span class="post-word-count">{{ .WordCount }} words</span>
+        </div>
+    </header>
+
+    <div class="post-content">
+        <!--featured_image-->
+
+        {{ $images := findRE "<img src=\"[^\"|\\\"]*\"" .Content -}}
+        {{ if ge (len $images) 1}}
+        {{ $.Scratch.Set "postHasImages" true }}
+        {{ end }}
+
+        {{ with .Params.featured_image }}
+        {{- $img := . -}}
+        <img src="{{ printf "%s" $img }}" class="featured_image">
+        {{ end }}
+        <!-- end featured_image-->
+
+        {{ $reAltIn := "<img src=\"([^\"]+)\" alt=\"([^\"]+)?\" />" }}
+        {{ $reAltOut :=  ( printf "<figure><img data-sizes=\"auto\" data-src=\"%s$1\" alt=\"$2\" class=\"lazyload\"><figcaption class=\"image-caption\">$2</figcaption></figure>" ) }}
+        {{ $altContent := .Content | replaceRE $reAltIn $reAltOut | safeHTML }}
+
+        {{ $reAltTitleIn := "<img src=\"([^\"]+)\" alt=\"([^\"]+)?\" title=\"([^\"]+)?\" />" }}
+        {{ $reAltTitleOut := ( printf "<figure><img data-src=\"%s$1\" data-sizes=\"auto\" alt=\"$2\" title=\"$3\" class=\"lazyload\"><figcaption class=\"image-caption\">$2</figcaption></figure>" ) }}
+        {{ $finalContent := $altContent | replaceRE $reAltTitleIn $reAltTitleOut | safeHTML }}
+
+        {{ $finalContent }}
+    </div>
+
+    <div class="post-copyright">
+        {{ if .Site.Params.author }}
+        <p class="copyright-item">
+            <span><i class="fas fa-pen"></i> Author:</span>
+            <span><a href="{{ .Site.BaseURL }}">{{ .Site.Params.author  }}</a></span>
+        </p>
+        {{ end }}
+
+        {{ with .Permalink }}
+        <p class="copyright-item">
+            <span><i class="fas fa-link"></i> Link:</span>
+            <span><a href={{ . }}>{{ . }}</span></a>
+        </p>
+        {{ end }}
+        {{ with .Site.Params.license }}
+        <p class="copyright-item license">
+            <span><i class="far fa-copyright"></i> License: </span>
+            {{ . | safeHTML}}
+        </p>
+        {{ end }}
+    </div>
+
+    <div class="post-tags">
+        {{ with .Params.tags }}
+        <section>
+            <i class="fas fa-tag"></i> Tag(s):
+            {{ range . }}
+            <span class="tag"><a href="{{ "tags/" | absURL }}{{ . | urlize }}/">
+                    #{{.}}</a></span>
+            {{ end }}
+        </section>
+        {{ end }}
+        <section>
+            <a href="javascript:window.history.back();"><i class="fas fa-undo"></i> Back</a></span>
+            <!-- <span><a href="{{ .Site.BaseURL }}">Home</a></span> -->
+        </section>
+    </div>
+
+    <div class="post-nav">
+        {{ if .PrevInSection }}
+        <a href="{{.PrevInSection.Permalink}}" class="prev" rel="prev" title="{{ .PrevInSection.Title}}"><i
+                class="fas fa-angle-left"></i>&nbsp;{{ .PrevInSection.Title}}</a>
+        {{ end }}
+        {{ if .NextInSection }}
+        <a href="{{.NextInSection.Permalink}}" class="next" rel="next"
+            title="{{.NextInSection.Title}}">{{.NextInSection.Title}}&nbsp;<i class="fas fa-angle-right"></i></a>
+        {{ end }}
+    </div>
+
+    <div class="post-comment">
+        {{ if ( $.Params.showComments | default true ) }}
+        {{ if ne .Site.DisqusShortname "" }}
+        {{ template "_internal/disqus.html" . }}
+        {{ else if .Site.Params.enableGitalk }}
+        {{ partial "gitalk.html" . }}
+        {{ end }}
+        {{ end }}
+    </div>
+</article>
+{{- end }}

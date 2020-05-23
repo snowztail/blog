@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About on SnowzTail: Share Wonder</title>
+    <link>https://snowztail.com/about/</link>
+    <description>Recent content in About on SnowzTail: Share Wonder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 24 Nov 2019 12:41:28 +0000</lastBuildDate>
+
+  <atom:link href="https://snowztail.com/about/index.xml" rel="self" type="application/rss+xml" />
+
+
+    <item>
+      <title>Notes</title>
+      <link>https://snowztail.com/about/</link>
+      <pubDate>Sun, 24 Nov 2019 12:41:28 +0000</pubDate>
+
+      <guid>https://snowztail.com/about/</guid>
+      <description></description>
+    </item>
+
+  </channel>
+</rss>

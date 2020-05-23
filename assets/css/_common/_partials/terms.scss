@@ -1,0 +1,90 @@
+.post-warp {
+    .post-title {
+        padding-top: 1em;
+        padding-bottom: 1.5em;
+    }
+
+    .archive-item {
+        margin-left: 1.75rem;
+        margin-top: 0.75em;
+        margin-bottom: 0.75em;
+        line-height: normal;
+    }
+
+    .categories-card {
+        margin: 0 auto;
+        // margin-top: 3em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        // padding: 0 2.5em;
+        line-height: 1.5em;
+
+        .card-item {
+            font-size: 14px;
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+            // margin-top:2em;
+            min-height: 16em;
+            // padding: 0 2%;
+            position: relative;
+
+            .categories{
+                overflow: hidden;
+            }
+        }
+    }
+
+    .archive-item-link {
+        display: inline-block;
+        text-decoration: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        // max-width: 95%;
+        &:hover {
+            color: $light-global-link-hover-color;
+            background-color: transparent;
+        }
+
+        .dark-theme & {
+            color: $dark-global-link-color;
+            text-decoration: none;
+            transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+
+            &:hover {
+                color: $dark-global-link-hover-color;
+                text-decoration: none;
+                transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+            }
+        }
+    }
+    .archive-item-date {
+        float: right;
+        text-align: right;
+        color: $light-font-secondary-color;
+
+        .dark-theme & {
+            color: $dark-font-secondary-color;
+        }
+    }
+
+    .more-post {
+        text-align: right;
+    }
+}
+
+.categories {
+    h3 {
+        display: inline-block;
+        // margin-bottom: 1em;
+        padding-top: 0.5em;
+    }
+    span {
+        float: right;
+        // padding-right: 1em;
+    }
+}

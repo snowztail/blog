@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on SnowzTail: Share Wonder</title>
+    <link>https://snowztail.com/posts/</link>
+    <description>Recent content in Posts on SnowzTail: Share Wonder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 09 May 2020 00:37:42 +0000</lastBuildDate>
+    
+	<atom:link href="https://snowztail.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>数据处理 1 - 稀疏回归和贪心算法</title>
+      <link>https://snowztail.com/dp-1-sparse-regression-and-greedy-algorithms/</link>
+      <pubDate>Sat, 09 May 2020 00:37:42 +0000</pubDate>
+      
+      <guid>https://snowztail.com/dp-1-sparse-regression-and-greedy-algorithms/</guid>
+      <description>稀疏回归 稀疏回归 (sparse regression) 是一种通过求解欠定方程的稀疏解从训练样本 \(x\) 和结果 \(y\) 中找出它们的对应关系 \(f\), 使得 \[y_i \approx f(x_i), \quad x_i \in \mathbb{R}^n, i = 1,\dots,m\] 其中 \(n\) 为参数的个数, \(m\) 为</description>
+    </item>
+    
+    <item>
+      <title>凸优化 3 - 关系</title>
+      <link>https://snowztail.com/cvx-3-ordering-separating-and-supporting/</link>
+      <pubDate>Tue, 14 Jan 2020 20:08:25 +0000</pubDate>
+      
+      <guid>https://snowztail.com/cvx-3-ordering-separating-and-supporting/</guid>
+      <description>这一章介绍集合间的代数与几何关系. 正常锥 如果锥 \(K \subseteq {\mathbb{R}^n}\) 同时满足 凸: 连接 \(K\) 中任意两点的线段完全包含在 \(K\) 中 闭: \(K\) 包含其中所有点的极限 实 (solid): \(K\) 具有非空</description>
+    </item>
+    
+    <item>
+      <title>凸优化 2 - 运算</title>
+      <link>https://snowztail.com/cvx-2-operations/</link>
+      <pubDate>Tue, 10 Dec 2019 21:23:09 +0000</pubDate>
+      
+      <guid>https://snowztail.com/cvx-2-operations/</guid>
+      <description>这一章介绍一些保持集合凸性的运算. 交集 如果集合 \({S_1}\) 和 \({S_2}\) 都是凸的, 那么它们的交集 \({S_1} \cap {S_2}\) 也是凸的. 这个结论可以扩展到无数个集合的情况: 如果对于每个</description>
+    </item>
+    
+    <item>
+      <title>凸优化 1 - 凸集</title>
+      <link>https://snowztail.com/cvx-1-convex-sets/</link>
+      <pubDate>Sun, 24 Nov 2019 12:41:28 +0000</pubDate>
+      
+      <guid>https://snowztail.com/cvx-1-convex-sets/</guid>
+      <description>仿射集和凸集 直线和线段 假设在 \({\mathbb{R}^n}\) 中有两个不同点 \({x_1} \ne {x_2}\), 那么 \[\begin{array}{*{20}{c}}{y = \theta {x_1} + (1 - \theta ){x_2},}&amp;amp;{\theta \in \mathbb{R}}\end{array}\] 表示穿越 \({x_1}\) 和 \({x_2}\) 的 直线 (line), 而 \[\begin{array}{*{20}{c}}{y = \theta {x_1} + (1 - \theta ){x_2},}&amp;amp;{\theta \in [0,1]}\end{array}\] 表示穿越 \({x_1}\) 和 \({x_2}\) 的 线</description>
+    </item>
+    
+  </channel>
+</rss>

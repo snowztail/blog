@@ -1,0 +1,53 @@
+{{ $highlight := resources.Get "/js/highlight.pack.js" }}
+{{ $main := resources.Get "/js/main.js" }}
+
+{{ $main := slice $highlight $main | resources.Concat "/js/vendor_main.js" | resources.Minify}}
+<!-- Main -->
+<script defer src="{{ printf "%s" $main.RelPermalink }}"></script>
+
+<!-- Scroll -->
+<script>
+    const scroll = document.querySelector("#scroll");
+    scroll.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    });
+</script>
+
+{{ if or .Page.Params.math .Site.Params.math }}
+<!-- MathJax -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{{ end }}
+
+{{ if or .Page.Params.plantuml .Site.Params.plantuml }}
+<!-- PlantUML -->
+<script src="https://cdn.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js"></script>
+<script>
+    (function () {
+        let plantumlPrefix = "language-plantuml";
+        Array.prototype.forEach.call(document.querySelectorAll("[class^=" + plantumlPrefix + "]"), function (code) {
+            let image = document.createElement("IMG");
+            image.loading = 'lazy'; // Lazy loading
+            image.src = 'http://www.plantuml.com/plantuml/svg/~1' + plantumlEncoder.encode(code.innerText);
+            code.parentNode.insertBefore(image, code);
+            code.style.display = 'none'
+        });
+    })();
+</script>
+{{ end }}
+
+{{ if and (.Page.Params.restyleTextSpacing | default true) (.Site.Params.restyleTextSpacing | default true) }}
+<!-- Pangu.js -->
+<script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"
+    integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script> pangu.spacingPage();</script>
+{{ end }}
+
+{{ range .Site.Params.custom.js }}
+<!-- Custom -->
+<script defer src="{{ . | absURL }}"></script>
+{{ end }}

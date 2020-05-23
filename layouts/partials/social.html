@@ -1,0 +1,26 @@
+{{ with .Site.Params.Social.Github }}
+<a href="https://github.com/{{.}}" target="_blank" rel="me noopener"><i class="fab fa-github fa-lg"></i></a>
+{{ end }}
+{{ with .Site.Params.Social.Twitter }}
+<a href="https://twitter.com/{{.}}" target="_blank" rel="me noopener"><i class="fab fa-twitter fa-lg"></i></a>
+{{ end }}
+{{ with .Site.Params.Social.Pocket}}
+<a href="https://getpocket.com/@{{.}}" rel="me noopener"><i class="fab fa-get-pocket fa-lg"></i></a>
+{{ end }}
+{{ with .Site.Params.Social.Telegram}}
+<a href="https://t.me/{{.}}" rel="me noopener"><i class="fab fa-telegram-plane fa-lg"></i></a>
+{{ end }}
+{{ with .Site.Params.Social.Email}}
+<a href="mailto:{{.}}" rel="me noopener"><i class='fas fa-envelope fa-lg'></i></a>
+{{ end }}
+{{ with .Site.Params.Social.LinkedIn }}
+<a href="https://linkedin.com/in/{{.}}" target="_blank" rel="me noopener"><i class="fab fa-linkedin-in fa-lg"></i></a>
+{{ end }}
+
+{{ with .Site.Params.Social.Weibo }}
+<a href="https://weibo.com/{{.}}" target="_blank" rel="me noopener"><i class="fab fa-weibo fa-lg"></i></a>
+{{ end }}
+{{ with .Site.Params.Social.Wechat}}
+<a href="javascript:void(0);" onclick="document.getElementById('lightbox').style.display='inline';"><i
+        class="fab fa-weixin fa-lg"></i></a>
+{{end}}

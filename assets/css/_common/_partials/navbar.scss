@@ -1,0 +1,52 @@
+
+
+
+  .header-logo a{
+    padding: 0 ;
+
+    i{
+      line-height: 2em;
+    }
+  }
+
+
+ .navbar .navbar-right a {
+
+    padding: 0 8px;
+  }
+
+  .navbar .navbar-right .active{
+      font-weight: 900;
+      color: $light-navbar-active-color;
+
+      .dark-theme &{
+        color: $dark-navbar-active-color;
+      }
+  }
+
+  .navbar-header a:hover, .navbar .navbar-right a:hover {
+    background-color: transparent;
+  }
+
+  .navbar-header a:hover {
+    color: #fe5186;
+  }
+
+  #scroll {
+    position: fixed;
+    font-size: 25px;
+    right: 70px;
+    bottom: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background: $dark-background-color;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    color: $light-border-color;
+    border: 1.5px solid $light-border-color;
+    outline: none;
+    cursor: pointer;
+    &:active{
+      background: #ef3982;
+    }
+  }
