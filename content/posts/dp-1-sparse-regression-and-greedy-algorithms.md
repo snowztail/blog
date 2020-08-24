@@ -142,18 +142,18 @@ __硬阈值函数 (hard thresholding function)__ 保留原向量幅值最大的 
 
 在有噪声的情况下, 这个问题变成
 
-\\[\min _ \boldsymbol{x} \lVert\boldsymbol{x}\rVert _ 0, \quad \mathrm{s.t.}\  \lVert\boldsymbol{y} - \boldsymbol{A}\boldsymbol{x}\rVert_2 \le \epsilon \tag{1}\\]
+\\[\min _ \boldsymbol{x} \lVert\boldsymbol{x}\rVert _ 0, \quad \mathrm{s.t.}\  \lVert\boldsymbol{y} - \boldsymbol{A}\boldsymbol{x}\rVert_2 \le \epsilon \label{1}\tag{1}\\]
 
 写成无约束优化问题就是
 
-\\[\min _ \boldsymbol{x} \frac{1}{2} \lVert\boldsymbol{y} - \boldsymbol{A}\boldsymbol{x}\rVert_2^2 + \lambda\lVert\boldsymbol{x}\rVert _ 0 \tag{2}\\]
+\\[\min _ \boldsymbol{x} \frac{1}{2} \lVert\boldsymbol{y} - \boldsymbol{A}\boldsymbol{x}\rVert_2^2 + \lambda\lVert\boldsymbol{x}\rVert _ 0 \label{2}\tag{2}\\]
 
 其中 \\(\lambda\\) 表示稀疏度的权重
 
 - \\(\lambda \to 0 \Rightarrow \boldsymbol{y} = \boldsymbol{A}\boldsymbol{x}\\)&emsp;(保持数据一致性)
 - \\(\lambda \to \infty \Rightarrow \boldsymbol{x} = \boldsymbol{0}\\)&emsp;(稀疏度最低)
 
-解决非凸问题 (1) 往往需要穷举法: 对于 \\(s = 1,\dots,S\\), 遍历所有满足 \\(\forall \lvert\mathcal{I}\rvert = s\\) 的 \\(\mathcal{I}\\), 复杂度是 \\(\mathcal{O}(n^S)\\). 那么有没有其他方法获得稀疏解呢?
+解决非凸问题 (\ref{1}) 往往需要穷举法: 对于 \\(s = 1,\dots,S\\), 遍历所有满足 \\(\forall \lvert\mathcal{I}\rvert = s\\) 的 \\(\mathcal{I}\\), 复杂度是 \\(\mathcal{O}(n^S)\\). 那么有没有其他方法获得稀疏解呢?
 
 ## 贪心算法
 __贪心算法 (greedy algorithm)__ 是一类 __[启发式 (heuristic)](https://en.wikipedia.org/wiki/Heuristic)__ 算法, 它在每个阶段作出快速的局部最优选择, 并且期待据此能够得到全局最优解. 贪心算法在大多数问题中并不能够保证全局最优, 但是可以在短时间内得到一些比较好的解来逼近最优解.
@@ -288,16 +288,16 @@ __Algorithm 2__ Subspace Pursuit (SP)
 
 ---
 
-因为每次更新 \\(S\\) 个索引, SP 所需迭代次数较少 (通常为 \\(\mathcal{O}(\log S)\\), 不超过 \\(S\\)), 代价是需要在每次迭代中对之前的解重新评估, 重构精度不如 OMP. 把循环中 (1) (2) 扩展到 \\(3S\\) 子空间就得到了 CoSaMP 算法.
+因为每次更新 \\(S\\) 个索引, SP 所需迭代次数较少 (通常为 \\(\mathcal{O}(\log S)\\), 不超过 \\(S\\)), 代价是需要在每次迭代中对之前的解重新评估, 重构精度不如 OMP. 把循环中 (\ref{1}) (\ref{2}) 扩展到 \\(3S\\) 子空间就得到了 CoSaMP 算法.
 
 {{< figure src="/figures/dp-1-sparse-regression-and-greedy-algorithms/9-subspace-pursuit.png" title="\(\boldsymbol{A} _ {\mathcal{T}^l}\) 出自 \(\boldsymbol{A} _ {\tilde{\mathcal{T}}^l}, 本质上由 \boldsymbol{A} _ {\mathcal{T}^{(l - 1)}} 和 \boldsymbol{y} _ r\) 决定" >}}
 
 ### 迭代硬阈值
 __迭代硬阈值 (iterative hard thresholding)__ 算法通过迭代给出优化问题
 
-\\[\min _ \boldsymbol{x} \frac{1}{2} \lVert \boldsymbol{y} - \boldsymbol{A}\boldsymbol{x}\rVert _ 2 ^ 2, \quad \mathrm{s.t.}\  \lVert\boldsymbol{x}\rVert _ 0 \le S \tag{3}\\]
+\\[\min _ \boldsymbol{x} \frac{1}{2} \lVert \boldsymbol{y} - \boldsymbol{A}\boldsymbol{x}\rVert _ 2 ^ 2, \quad \mathrm{s.t.}\  \lVert\boldsymbol{x}\rVert _ 0 \le S \label{3}\tag{3}\\]
 
-的一个局部最优解. 在已知稀疏度 \\(S\\) 的情况下这个问题和原问题 (1) 是等价的, 它们都可以写成 (2) 的形式.
+的一个局部最优解. 在已知稀疏度 \\(S\\) 的情况下这个问题和原问题 (\ref{1}) 是等价的, 它们都可以写成 (\ref{2}) 的形式.
 
 ---
 __Algorithm 3__ Iterative Hard Thresholding (IHT)

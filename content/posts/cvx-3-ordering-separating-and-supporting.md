@@ -177,7 +177,7 @@ __谱范数 (spectral norm)__ 是两个 Euclidean 范数的算子范数, 定义�
 
     <details>
         <summary>证明: \(l _ p\)-范数的对偶</summary>
-        <p>令 \(1/p + 1/q = 1, \ p, q \in [1,\infty]\). 由 <a href="https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality">Hölder 不等式</a> 可知, 对于任意 \(x,y \in \mathbb{R}^n\)</p>
+        <p>令 \(1/p + 1/q = 1, \ p, q \in [1,\infty]\). 由 <a href="https://snowztail.com/cvx-4-convex-functions/#h%C3%B6lder-%E4%B8%8D%E7%AD%89%E5%BC%8F">Hölder 不等式</a> 可知, 对于任意 \(x,y \in \mathbb{R}^n\)</p>
         \begin{equation}
             \lvert{x^Ty}\rvert \le \lVert{x}\rVert _ p \lVert{y}\rVert _ q = \left(\sum _ i ^ n \lvert{x _ i}\rvert ^ p\right) ^ {1 / p} \left(\sum _ i ^ n \lvert{y _ i}\rvert ^ q\right) ^ {1 / q}
         \end{equation}
@@ -246,45 +246,45 @@ __对偶广义不等式 (dual generalized inequality)__ 是广义不等式的对
 ### Farkas 引理和择一定理
 __Farkas 引理 (Farkas' lemma)__ 是一个线性不等式组的可解性定理. 对于给定的矩阵 \\(A \in \mathbb{C}^{m \times n}\\) 和向量 \\(b \in \mathbb{C}^m\\), 下列两个方程组有且只有一个有解:
 
-\\[Ax = b, \quad x \succeq 0 \tag{1a}\\]
-\\[A^Ty \succeq 0, \quad b^Ty < 0 \tag{1b}\\]
+\\[Ax = b, \quad x \succeq 0 \label{1a}\tag{1a}\\]
+\\[A^Ty \succeq 0, \quad b^Ty < 0 \label{1b}\tag{1b}\\]
 
-从几何意义上看, Farkas 引理描述的是点和凸锥的位置关系 -- 点在锥内或边界 (1a) 和点在锥外 (1b). 我们知道矩阵 \\(A\\) 的行可以 [张成一个凸锥](https://snowztail.com/cvx-1-convex-sets/#%E5%A4%9A%E9%9D%A2%E4%BD%93) \\(K = \\{x \in \mathbb{R}^n \mid Ax \succeq 0\\}\\), 那么
+从几何意义上看, Farkas 引理描述的是点和凸锥的位置关系 -- 点在锥内或边界 (\ref{1a}) 和点在锥外 (\ref{1b}). 我们知道矩阵 \\(A\\) 的行可以 [张成一个凸锥](https://snowztail.com/cvx-1-convex-sets/#%E5%A4%9A%E9%9D%A2%E4%BD%93) \\(K = \\{x \in \mathbb{R}^n \mid Ax \succeq 0\\}\\), 那么
 
 - 如果 \\(b\\) 在锥内或边界, 则 \\(b\\) 可以由 \\(A\\) 的行线性表示, 且由锥的定义可知其中系数 \\(x\\) 非负
 - 如果 \\(b\\) 在锥外, 由 [超平面分离定理](https://snowztail.com/cvx-3-ordering-separating-and-supporting/#%E5%88%86%E7%A6%BB%E4%B8%8E%E6%94%AF%E6%92%91%E8%B6%85%E5%B9%B3%E9%9D%A2) 可知, 存在过原点的平面 \\(y\\) 将凸锥 \\(A\\) 和锥外一点 \\(b\\) 分开
 
 __择一定理 (theorem of alternative)__ 指在多个系统中有且只有一个有解. Farkas 引理是择一定理的一个例子, 其中的两个系统由广义线性不等式约束. Farkas 引理的一个变体是:
 
-\\[Ax \prec b \tag{2a}\\]
-\\[A^T\lambda = 0, \quad \lambda^Tb \le 0, \quad \lambda \ne 0, \quad \lambda \succeq 0 \tag{2b}\\]
+\\[Ax \prec b \label{2a}\tag{2a}\\]
+\\[A^T\lambda = 0, \quad \lambda^Tb \le 0, \quad \lambda \ne 0, \quad \lambda \succeq 0 \label{2b}\tag{2b}\\]
 
 <details>
     <summary>证明: 广义不等式的择一定理</summary>
-    <p>我们知道 (2a) 等价于 \(0 \preceq _ {\mathbb{R} _ {++}^m} b - Ax\), 那么如果 (2a) 不成立, \(C = \{b - Ax \mid x \in \mathbb{R}^n\}\) 和 \(D = \mathbb{R} _ {++}^m = \{y \in \mathbb{R}^m \mid y \succ 0\}\) 没有交集. 根据超平面分离定理, 存在一个由 \(\lambda \in \mathbb{R}^m, \lambda \ne 0\) 和 \(\mu \in \mathbb{R}\) 定义的超平面使得</p>
+    <p>我们知道 (\ref{2a}) 等价于 \(0 \preceq _ {\mathbb{R} _ {++}^m} b - Ax\), 那么如果 (\ref{2a}) 不成立, \(C = \{b - Ax \mid x \in \mathbb{R}^n\}\) 和 \(D = \mathbb{R} _ {++}^m = \{y \in \mathbb{R}^m \mid y \succ 0\}\) 没有交集. 根据超平面分离定理, 存在一个由 \(\lambda \in \mathbb{R}^m, \lambda \ne 0\) 和 \(\mu \in \mathbb{R}\) 定义的超平面使得</p>
     \[\lambda^Ty \le \mu, \forall y \in C, \quad \lambda^Ty \ge \mu, \forall y \in D\]
     <p>这个结论可以进一步简化:</p>
     <ul>
         <li>前者即 \(\lambda^T(b - Ax) \le \mu, \forall x \in \mathbb{R}^n\). 因为线性函数在 \({{\mathbb{R}^m}}\) 上有 (上) 界当且仅当这个函数为 0, 可知 \(\lambda^TA = 0\) 且 \(\lambda^Tb \le \mu\)</li>
         <li>后者即 \(\lambda^Ty \ge \mu, \forall y \succ 0\). 它在 \(\lambda \succeq 0, \lambda \ne 0\) 和 \(\mu \le 0\) 时成立</li>
     </ul>
-    <p>所以, 如果 (2a) 不成立, 取 \(\mu = 0\) 就可以推出 (2b). 反过来, 如果 (2b) 成立, 假设 (2a) 也成立, 那么由 \(\lambda \ne 0, \lambda \succeq 0\) 和 \(b - Ax \succ 0\) 可知 \(\lambda^T(b - Ax) > 0\). 又因为 \(A^T\lambda = 0\), 所以推出 \(\lambda^Tb > 0\), 与 (2b) 的 \(\lambda^Tb \le 0\) 矛盾. 所以, (2a) 和 (2b) 是一对择一不等式组.</p>
+    <p>所以, 如果 (\ref{2a}) 不成立, 取 \(\mu = 0\) 就可以推出 (\ref{2b}). 反过来, 如果 (\ref{2b}) 成立, 假设 (\ref{2a}) 也成立, 那么由 \(\lambda \ne 0, \lambda \succeq 0\) 和 \(b - Ax \succ 0\) 可知 \(\lambda^T(b - Ax) > 0\). 又因为 \(A^T\lambda = 0\), 所以推出 \(\lambda^Tb > 0\), 与 (\ref{2b}) 的 \(\lambda^Tb \le 0\) 矛盾. 所以, (\ref{2a}) 和 (\ref{2b}) 是一对择一不等式组.</p>
 </details>
 
 它也可以推广到一般广义不等式的情况:
 
-\\[Ax \prec _ K b \tag{3a}\\]
-\\[A^T\lambda = 0, \quad \lambda^Tb \le 0, \quad \lambda \ne 0, \quad \lambda \succeq _ {K^*} 0 \tag{3b}\\]
+\\[Ax \prec _ K b \label{3a}\tag{3a}\\]
+\\[A^T\lambda = 0, \quad \lambda^Tb \le 0, \quad \lambda \ne 0, \quad \lambda \succeq _ {K^*} 0 \label{3b}\tag{3b}\\]
 
 <details>
     <summary>证明: 一般广义不等式的择一定理</summary>
-    <p>如果 (3a) 不成立, \(C = \{b - Ax \mid x \in \mathbb{R}^n\}\) 和 \(D = \mathrm{int}(K)\) 没有交集. 根据超平面分离定理, 存在一个由 \(\lambda \in \mathbb{R}^m, \lambda \ne 0\) 和 \(\mu \in \mathbb{R}\) 定义的超平面使得</p>
+    <p>如果 (\ref{3a}) 不成立, \(C = \{b - Ax \mid x \in \mathbb{R}^n\}\) 和 \(D = \mathrm{int}(K)\) 没有交集. 根据超平面分离定理, 存在一个由 \(\lambda \in \mathbb{R}^m, \lambda \ne 0\) 和 \(\mu \in \mathbb{R}\) 定义的超平面使得</p>
     \(\lambda^Ty \le \mu, \forall y \in C\) 和 \(\lambda^Ty \ge \mu, \forall y \in D\).
     <ul>
         <li>由前者可知 \(\lambda^TA = 0\) 且 \(\lambda^Tb \le \mu\)</li>
         <li>后者即 \(\lambda^Ty \ge \mu, \forall y \in \mathrm{int}(K)\). 它在 \(\lambda \in K^ *, \lambda \ne 0\) 和 \(\mu \le 0\) 时成立.</li>
     </ul>
-    <p>所以, 如果 (3a) 不成立, 取 \(\mu = 0\) 就可以推出 (3b). 反过来, 假设 (3a) (3b) 同时成立, 由 \(\lambda \ne 0, \lambda \succeq _ {K^ *} 0\) 和 \(b - Ax \succ _ K 0\) 可知 \(\lambda^T(b - Ax) > 0\). 又因为 \(A^T\lambda = 0\), 所以推出 \(\lambda^Tb > 0\), 与 \(\lambda^Tb \le 0\) 矛盾. 所以, (3a) 和 (3b) 是一对择一不等式组.</p>
+    <p>所以, 如果 (\ref{3a}) 不成立, 取 \(\mu = 0\) 就可以推出 (3b). 反过来, 假设 (\ref{3a}) (\ref{3b}) 同时成立, 由 \(\lambda \ne 0, \lambda \succeq _ {K^ *} 0\) 和 \(b - Ax \succ _ K 0\) 可知 \(\lambda^T(b - Ax) > 0\). 又因为 \(A^T\lambda = 0\), 所以推出 \(\lambda^Tb > 0\), 与 \(\lambda^Tb \le 0\) 矛盾. 所以, (\ref{3a}) 和 (\ref{3b}) 是一对择一不等式组.</p>
 </details>
 
 ### 最小元和极小元的对偶性质
