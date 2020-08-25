@@ -1,7 +1,7 @@
 ---
-title: "凸优化 4 - 凸函数"
+title: "凸优化 3 - 函数"
 author: "SnowzTail"
-date: 2020-07-20T22:20:09Z
+date: 2020-03-20T22:20:09Z
 math: true
 draft: false
 categories:
@@ -23,11 +23,15 @@ featured_image:
 
 那么称 \\(f\\) 为 __凸函数 (convex function)__. 如果不等式对于所有的 \\(x \ne y\\) 和 \\(\theta \in (0, 1)\\) 都取不到等号, 那么称 \\(f\\) 是 __严格凸 (strictly convex)__ 的. 和中文字形相反, 连接凸函数上任意两点的线段都不位于函数的下方.
 
-{{< figure src="/figures/cvx-4-convex-functions/1-convex-function.png" title="连接凸函数上任意两点的线段都不位于函数的下方" >}}
+{{< figure src="/figures/cvx-3-functions/1-convex-function.png" title="连接凸函数上任意两点的线段都不位于函数的下方" >}}
 
-如果 \\(-f\\) 是凸函数, 那么 \\(f\\) 是 __凹函数 (concate function)__. 如果 \\(-f\\) 是严格凸的, 那么 \\(f\\) 是 __严格凹 (strictly concate)__ 的.
+如果 \\(-f\\) 是凸函数, 那么 \\(f\\) 是 __凹函数 (concate function)__. 如果 \\(-f\\) 是严格凸的, 那么 \\(f\\) 是 __严格凹 (strictly concate)__ 的. 仿射函数是且仅是唯一既凹又凸的函数. 所以在解很多二次非凸问题的时候, 常常通过二次项的泰勒展开式得到仿射逼近, 把原问题转化成一系列凸问题求解. 比如对于 \\(x \in \mathbb{C}^{n}\\), \\(A \in \mathbb{S}^{n \times n}\\), 在第 \\(i\\) 次迭代有 \\((x^{(i)})^H A x^{(i)} \ge 2\Re\\{(x^{(i)})^H A x^{(i-1)}\\} - (x^{(i-1)})^H A x^{(i-1)}\\).
 
-<strong>仿射函数是既凹又凸的; 如果一个函数既凹又凸, 那么它是仿射函数.</strong> 所以在解很多二次非凸问题的时候, 常常通过二次项的泰勒展开式得到仿射逼近, 把原问题转化成一系列凸问题求解. 比如对于 \\(x \in \mathbb{C}^{n}\\), \\(A \in \mathbb{S}^{n \times n}\\), 在第 \\(i\\) 次迭代有 \\((x^{(i)})^H A x^{(i)} \ge 2\Re\\{(x^{(i)})^H A x^{(i-1)}\\} - (x^{(i-1)})^H A x^{(i-1)}\\).
+<blockquote cite="仿射函数的凹凸性">
+仿射函数是且仅是唯一既凹又凸的函数.
+</blockquote>
+
+---
 
 ## 判断条件
 除定义外, 常用以下几个条件来判断函数凹凸性.
@@ -61,7 +65,7 @@ featured_image:
     </ul>
 </details>
 
-{{< figure src="/figures/cvx-4-convex-functions/2-functions-restricted-to-lines.png" title="两个在 \(\mathbb{R}^2\) 上的函数, 在 \(xy\) 平面上任意画一条直线. 左: 在这条直线上总是凸函数 (开口向上的抛物线); 右: 在这条直线上可能是凹函数 (开口向下的抛物线)" >}}
+{{< figure src="/figures/cvx-3-functions/2-functions-restricted-to-lines.png" title="两个在 \(\mathbb{R}^2\) 上的函数, 在 \(xy\) 平面上任意画一条直线. 左: 在这条直线上总是凸函数 (开口向上的抛物线); 右: 在这条直线上可能是凹函数 (开口向下的抛物线)" >}}
 
 ### 一阶条件
 如果函数 \\(f\\) 是可微的 (即梯度 \\(\nabla{f}\\) 在开集 \\(\mathrm{dom}(f)\\) 内处处存在), 那么 \\(f\\) 是凸函数当且仅当
@@ -116,7 +120,7 @@ featured_image:
     </ul>
 </details>
 
-{{< figure src="/figures/cvx-4-convex-functions/3-first-order-condition.png" title="对于凸函数上的任意一点, 都能找到对应的支撑超平面将函数分隔在一侧" >}}
+{{< figure src="/figures/cvx-3-functions/3-first-order-condition.png" title="对于凸函数上的任意一点, 都能找到对应的支撑超平面将函数分隔在一侧" >}}
 
 一阶导数不等式也说明, 如果一个函数是凸函数, 那么我们可以从局部信息推导出全局信息. 比如, 如果凸函数 \\(f\\) 在 \\(x\\) 处的梯度 \\(\nabla{f(x)} = 0\\), 那么对于任何 \\(y \in \mathrm{dom}(f)\\) 都有 \\(f(y) \ge f(x)\\), 即 \\(x\\) 是 \\(f\\) 的全局极小点.
 
@@ -175,6 +179,11 @@ featured_image:
 - __幂函数 (powers)__ \\(x ^ a\\): 当 \\(a \ge 1\\) 或 \\(a \le 0\\) 是 \\(x \in \mathbb{R} _ {++}\\) 上的凸函数; 当 \\(0 \le a \le 1\\) 是 \\(x \in \mathbb{R} _ {++}\\) 上的凹函数
 - __倒数 (reciprocal)__ \\(1 / x\\): 是 \\(x \in \mathbb{R} _ {++}\\) 上的凸函数; 是 \\(x \in \mathbb{R} _ {\-\-}\\) 上的凹函数
 
+---
+
+## 集合和不等式
+下面介绍一些和凸函数相关的集合和不等式.
+
 ### 下水平集
 函数 \\(f \colon \mathbb{R} ^ n \to \mathbb{R}\\) 的 \\(\alpha\\) - __下水平集 (sublevel set)__ 定义为
 
@@ -191,7 +200,7 @@ featured_image:
     <p>由下水平集的定义可知 \(x, y \in C _ {\alpha} \Rightarrow f(x), f(y) \le \alpha\), 故对于任意 \(0 \le \theta \le 1\) 有 \(f(\theta x + (1 - \theta) y) \le \alpha\), 即 \(\theta x + (1 - \theta) y \in C _ {\alpha}\).</p>
 </details>
 
-反过来, 凹函数的 \\(\alpha\\) - __上水平集 (superlevel set)__ \\(\\{x \in \mathrm{dom}(f) \mid f(x) \ge \alpha\\}\\) 也是凸集. 所以, 想要证明一个集合是凸集, 可以将它表示为一个凸函数的下水平集或一个凹函数的上水平集. 比如, 由 [算术-几何均值不等式](#算术-几何均值不等式) 可知, 对于 \\(A(x) = (1 / n) \sum _ {i=1} ^ n {x _ i}\\) 和 \\(G(x) = \left(\prod _ {i=1} ^ n {x _ i}\right) ^ {1 / n}\\), 有
+反过来, 凹函数的 \\(\alpha\\) - __上水平集 (superlevel set)__ \\(\\{x \in \mathrm{dom}(f) \mid f(x) \ge \alpha\\}\\) 也是凸集. 所以, 想要证明一个集合是凸集, 可以将它表示为一个凸函数的下水平集或一个凹函数的上水平集. 比如, 由 [算术 - 几何均值不等式](#算术-几何均值不等式) 可知, 对于 \\(A(x) = (1 / n) \sum _ {i=1} ^ n {x _ i}\\) 和 \\(G(x) = \left(\prod _ {i=1} ^ n {x _ i}\right) ^ {1 / n}\\), 有
 
 \\[A(x) \ge G(x)\\]
 
@@ -204,7 +213,7 @@ featured_image:
 
 它表示函数图像及其上方的部分. 请注意上境图和上水平集的区别: 对于 \\(f \colon \mathbb{R} ^ n \to \mathbb{R}\\), 前者是由满足条件的自变量 \\(x\\) 和函数值 \\(f(x)\\) 构成的 \\(\mathbb{R} ^ {n + 1}\\) 空间中的子集; 后者是由满足条件的自变量 \\(x\\) 构成的 \\(\mathbb{R} ^ {n}\\) 空间中的子集. 上境图构造了凸函数和凸集之间的联系, 一个函数是凸函数等价于它的上境图是凸集.
 
-{{< figure src="/figures/cvx-4-convex-functions/4-epigraph.png" title="上境图表示函数图像及其上方的部分" >}}
+{{< figure src="/figures/cvx-3-functions/4-epigraph.png" title="上境图表示函数图像及其上方的部分" >}}
 
 <blockquote cite="凸函数和上境图">
 一个函数是凸函数等价于它的上境图是凸集.
@@ -233,7 +242,7 @@ featured_image:
 
 \\[(y, t) \in \mathrm{epi}(f) \Rightarrow \begin{bmatrix} \nabla{f(x)} \\\ -1 \end{bmatrix} ^ T \left( \begin{bmatrix} y \\\ t \end{bmatrix} - \begin{bmatrix} x \\\ f(x) \end{bmatrix} \right) \le 0\\]
 
-{{< figure src="/figures/cvx-4-convex-functions/5-epigraph-and-convex-function.png" title="法向量为 \((\nabla{f(x)}, -1)\) 的超平面在边界点 \((x, f(x))\) 支撑 \(\mathrm{epi}(f)\)" >}}
+{{< figure src="/figures/cvx-3-functions/5-epigraph-and-convex-function.png" title="法向量为 \((\nabla{f(x)}, -1)\) 的超平面在边界点 \((x, f(x))\) 支撑 \(\mathrm{epi}(f)\)" >}}
 
 ### Jensen 不等式
 __Jensen 不等式__ 可以看作凸函数性质的推广. 如果 \\(f\\) 是凸函数, \\(x _ 1, \dots, x _ k \in \mathrm{dom}(f)\\), \\(\theta _ 1, \dots, \theta _ k \ge 0\\), \\(\sum _ {i=1} ^ k {\theta _ i} = 1\\), 那么
@@ -254,15 +263,15 @@ __Jensen 不等式__ 可以看作凸函数性质的推广. 如果 \\(f\\) 是凸
 
 也就是说, 在自变量上增加一个均值为零的额外变量不会减少凸函数的均值.
 
-### <a name="算术-几何均值不等式"></a>算术-几何均值不等式
-__算术-几何均值不等式 (AM-GM inequality)__ 的一般形式是, 如果 \\(\theta _ 1, \dots, \theta _ k \ge 0\\), \\(\sum _ {i=1} ^ k {\theta _ i} = 1\\), 那么对于任意 \\(x \in \mathbb{R} ^ n\\) 有
+### <a name="算术-几何均值不等式"></a>算术 - 几何均值不等式
+__算术 - 几何均值不等式 (AM-GM inequality)__ 的一般形式是, 如果 \\(\theta _ 1, \dots, \theta _ k \ge 0\\), \\(\sum _ {i=1} ^ k {\theta _ i} = 1\\), 那么对于任意 \\(x \in \mathbb{R} ^ n\\) 有
 
 \\[\sum _ {i=1} ^ n {\theta _ i x _ i} \ge \left(\prod _ {i=1} ^ n {x _ i ^ {\theta _ i}}\right)\\]
 
 其中左侧是一般算术均值不等式, 右侧是一般几何均值不等式. 它可以由 Jensen 不等式导出.
 
 <details>
-    <summary>证明: 算术-几何均值不等式</summary>
+    <summary>证明: 算术 - 几何均值不等式</summary>
     <p>选取凸函数 \(f(x) = - \log(x)\). 由 Jensen 不等式可知</p>
     \begin{equation}
         -\log\left(\sum _ {i=1} ^ n {\theta _ i x _ i}\right) \le \sum _ {i=1} ^ n {\theta _ i (-\log{x _ i})} = -\log\left(\prod _ {i=1} ^ n {x _ i ^ {\theta _ i}}\right)
@@ -281,7 +290,7 @@ __Hölder 不等式__ 的求和形式是, 如果 \\(p > 1\\) 且 \\(1 / p + 1 / 
 
 <details>
     <summary>证明: Hölder 不等式</summary>
-    <p>由算术-几何均值不等式可知</p>
+    <p>由算术 - 几何均值不等式可知</p>
     \begin{equation}
         a ^ {\theta} b ^ {1 - \theta} \le \theta a + (1 - \theta) b
     \end{equation}

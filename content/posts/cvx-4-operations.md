@@ -1,7 +1,7 @@
 ---
-title: "凸优化 2 - 运算"
+title: "凸优化 4 - 运算"
 author: "SnowzTail"
-date: 2019-12-10T21:23:09Z
+date: 2020-07-10T21:23:09Z
 math: true
 draft: false
 categories:
@@ -11,9 +11,10 @@ tags:
 featured_image:
 ---
 
-这一章介绍一些保持集合凸性的运算.
+## 集合运算
+下面介绍一些保持集合凸性的运算.
 
-## 交集
+### 交集
 如果集合 \\({S_1}\\) 和 \\({S_2}\\) 都是凸的, 那么它们的交集 \\({S_1} \cap {S_2}\\) 也是凸的. 这个结论可以扩展到无数个集合的情况: 如果对于每个 \\(\alpha  \in A\\) 集合 \\({S _ \alpha }\\) 都是凸的, 那么 \\({ \cap _ {\alpha  \in A}}{S _\alpha }\\) 也是凸的. 比如, 半空间和超平面都是凸集, 多面体作为它们的交集也是凸集.
 
 - 半正定锥
@@ -26,7 +27,7 @@ featured_image:
 
 我们后面会看到这个结论反过来也成立: 任何封闭的凸集 \\(S\\) 都可以写成半空间群的交集, 其中每个半空间都包含了集合 \\(S\\).
 
-## 仿射函数
+### 仿射函数
 定义 __仿射函数 (affine function)__ \\(f:{\mathbb{R}^n} \to {\mathbb{R}^m}\\) 为:
 
 \\[f(x) = Ax + b\\]
@@ -59,14 +60,14 @@ featured_image:
 
     已知凸集 \\({S_1},{S_2} \subseteq {\mathbb{R}^n} \times {\mathbb{R}^m}\\), 那么它们的部分和 \\(S = \\{ {\( {x,{y_1} + {y_2}} \) \mid \( {x,{y_1}} \) \in {S_1},\( {x,{y_2}} \) \in {S_2}} \\}\\) 是凸集, 其中 \\(x \in {\mathbb{R}^n},y \in {\mathbb{R}^m}\\). 这里集合 \\(S\\) 的维度同样是 \\({\mathbb{R}^n} \times {\mathbb{R}^m}\\), 其中前 \\(n\\) 项是 \\({S_1},{S_2}\\) 的前 \\(n\\) 项的交集, 后 \\(m\\) 项是 \\({S_1},{S_2}\\) 的后 \\(m\\) 项的和. 当 \\(m = 0\\) 时, 部分和退化为 \\({S_1},{S_2}\\) 的交集; 当 \\(n = 0\\) 时, 部分和退化为 \\({S_1},{S_2}\\) 的和.
 
-## 透视函数
+### 透视函数
 __透视函数 (perspective function)__ 对于原向量进行归一化使得最后一维的长度为 1, 然后舍弃最后一维: \\(P:{\mathbb{R}^{n + 1}} \to {\mathbb{R}^n}\\), \\(P(z,t) = z/t\\), 其中 \\(z \in {\mathbb{R}^n},t \in {\mathbb{R}_{ +  + }}\\).
 
 <blockquote cite="透视函数与小孔成像">
 小孔成像把三维物体投影到两维平面上. 位于坐标 \(( {{x_1},{x_2},{x_3}} )\) 的原物体经由一个位于原点的小孔被投影到像平面上的 \( - ( {{x_1}/{x_3},{x_2}/{x_3},1} )\). 最后一维不包含信息所以可以被忽略.
 </blockquote>
 
-{{< figure src="/figures/cvx-2-operations/1-pin-hole-camera.jpg" title="原位置向像位置的映射对应于透视函数" >}}
+{{< figure src="/figures/cvx-4-operations/1-pin-hole-camera.jpg" title="原位置向像位置的映射对应于透视函数" >}}
 
 如果 \\(C \subseteq {\mathbb{R}^n} \times {\mathbb{R}_{ +  + }}\\) 是凸集, 那么它在透视函数下的像
 
@@ -99,7 +100,7 @@ __透视函数 (perspective function)__ 对于原向量进行归一化使得最�
     <p>\[\mu  = \frac{{\theta t}}{{\theta t + (1 - \theta )s}}\]</p>
 </details>
 
-## 线性分式函数
+### 线性分式函数
 __线性分式函数 (linear-fractional function)__ 由透视函数和仿射函数组成. 将仿射函数 \\(g:{\mathbb{R}^n} \to {\mathbb{R}^{m + 1}}\\) 写成以下形式:
 
 \\[g(x) = \begin{bmatrix} A \\\ c^T \end{bmatrix} x + \begin{bmatrix} b \\\ d \end{bmatrix} \\]
@@ -126,4 +127,10 @@ __线性分式函数 (linear-fractional function)__ 由透视函数和仿射函�
 
     我们发现 \\(f\\) 可以通过一个线性分式映射从 \\(p\\) 得到. 所以, 如果 \\(C\\) 是一个关于 \\((u,v)\\) 的联合分布概率的凸集, 那么 \\(u\\) 在给定 \\(v\\) 下的条件概率也是凸集.
 
-    {{< figure src="/figures/cvx-2-operations/2-set-image-and-doms.jpg" title="对于集合 \(C \subseteq {\mathbb{R}^2}\) 和线性分式函数 \(f(x) = x/({x_1} + {x_2} + 1)\), 左: \(C\) 和 \(f\) 的定义域的边界 (定义域为虚线右上部分); 右: \(C\) 在 \(f\) 下的像 和 \({f^{ - 1}}\) 的定义域的边界 (定义域为虚线左下部分)" >}}
+    {{< figure src="/figures/cvx-4-operations/2-set-image-and-doms.jpg" title="对于集合 \(C \subseteq {\mathbb{R}^2}\) 和线性分式函数 \(f(x) = x/({x_1} + {x_2} + 1)\), 左: \(C\) 和 \(f\) 的定义域的边界 (定义域为虚线右上部分); 右: \(C\) 在 \(f\) 下的像 和 \({f^{ - 1}}\) 的定义域的边界 (定义域为虚线左下部分)" >}}
+
+---
+
+## 函数运算
+
+下面介绍一些保持函数凸性的运算.

@@ -179,6 +179,8 @@ featured_image:
 
 {{< figure src="/figures/cvx-1-convex-sets/4-conic-hulls.jpg" title="锥包是基于点集定义的" >}}
 
+---
+
 ## 一些例子
 
 ### 超平面和半空间
@@ -269,7 +271,7 @@ __多面体 (polyhedron)__ 是有限个线性等式和不等式的解集, 同时
 
 \\[\mathcal{P} = \\{ {x\mid Ax \preceq b,Cx = d} \\}\\]
 
-其中 \\( \preceq \\) 是 \\({\mathbb{R}^m}\\) 上的 [向量不等式](https://snowztail.com/cvx-3-ordering-separating-and-supporting/#%E5%B9%BF%E4%B9%89%E4%B8%8D%E7%AD%89%E5%BC%8F), 表示在每个方向上的分量都不大于.
+其中 \\( \preceq \\) 是 \\({\mathbb{R}^m}\\) 上的 [向量不等式](https://snowztail.com/cvx-3-functions/#%E5%B9%BF%E4%B9%89%E4%B8%8D%E7%AD%89%E5%BC%8F), 表示在每个方向上的分量都不大于.
 
 {{< figure src="/figures/cvx-1-convex-sets/10-polyhedron.jpg" title="多面体 \(\mathcal{P}\) 是法向量为 \({a_1}, \ldots ,{a_5}\) 的半空间群的交集" >}}
 

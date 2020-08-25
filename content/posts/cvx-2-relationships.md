@@ -1,5 +1,5 @@
 ---
-title: "凸优化 3 - 关系"
+title: "凸优化 2 - 关系"
 author: "SnowzTail"
 date: 2020-01-14T20:08:25Z
 math: true
@@ -23,6 +23,7 @@ featured_image:
 
 那么 \\(K\\) 就是一个 __正常锥 (proper cone)__.
 
+---
 
 ## 偏序和全序
 偏序和全序是集合论中的二元关系. 对于一个集合 \\(S\\), 如果关系 \\(R\\) 满足:
@@ -40,6 +41,8 @@ featured_image:
 那么 \\(R\\) 称为 \\(S\\) 上的 __全序 (total order)__ 关系. 如 \\(\le\\) 是实数集合 \\(\mathbb{R}\\) 上的全序关系.
 
 换句话说, 偏序关系可以比较集合内部分元素, 全序关系可以比较集合内任意两个元素.
+
+---
 
 ## 广义不等式
 正常锥可以定义描述集合间代数关系的 __广义不等式 (generalized inequality)__. 类似于 \\(\mathbb{R}\\) 上的 __标准序 (standard ordering)__ 即标准不等式, \\({\mathbb{R}^n}\\) 上的偏序可以用广义不等式表达为:
@@ -81,6 +84,8 @@ featured_image:
 - 传递性: \\(x \preceq _ K y,y \preceq _ K z \Rightarrow x \preceq _ K z\\)
 - 自反性: \\(x \preceq _ K x\\)
 
+---
+
 ## 最小与极小元
 标准不等式 \\( \le \\) 的一个特点是, 作为 \\(\mathbb{R}\\) 上的 __线性序 (linear ordering)__, 任何两点都是 __可比(comparable)__ 的 (即标量 \\(x \le y,y \le x\\) 至少有一个成立). 相比而言, 广义不等式 \\(\preceq _ K\\) 不满足这样的结论. 我们基于可比性定义集合的最小元与极小元:
 
@@ -116,7 +121,7 @@ featured_image:
 
     广义不等式 \\(x \preceq y\\) 表示 \\(y\\) 的每个分量都大于 \\(x\\) 的对应分量, 在 \\({\mathbb{R}^2}\\) 上体现为 \\(y\\) 同时位于 \\(x\\) 的右方和上方. \\(x\\) 是集合 \\(S\\) 的最小元表示 \\(S\\) 中所有其他点都在 \\(x\\) 的 (同时) 右上方; \\(x\\) 是集合 \\(S\\) 的极小元表示 \\(S\\) 中没有其他点在 \\(x\\) 的 (同时) 左下方, 虽然某些点可能在 \\(x\\) 的左方或下方 (但不是同时).
 
-    {{< figure src="/figures/cvx-3-ordering-separating-and-supporting/1-minimum-vs-minimal-in-r2.jpg" title="\({x_1}\) 是 \({S_1}\) 的最小元, 因为 \(S_1 \subseteq x_1 + K\) (后者为浅色阴影); \({x_2}\) 和它所在的边都是 \({S_2}\) 的极小元, 因为 \((x_2 - K) \cap S_2 = \{ x_2\} \) (前者为浅色阴影)" >}}
+    {{< figure src="/figures/cvx-2-relationships/1-minimum-vs-minimal-in-r2.jpg" title="\({x_1}\) 是 \({S_1}\) 的最小元, 因为 \(S_1 \subseteq x_1 + K\) (后者为浅色阴影); \({x_2}\) 和它所在的边都是 \({S_2}\) 的极小元, 因为 \((x_2 - K) \cap S_2 = \{ x_2\} \) (前者为浅色阴影)" >}}
 
 - 对称矩阵集合中的最小元和极小元
 
@@ -130,16 +135,20 @@ featured_image:
 
     集合 \\(S\\) 没有最小元, 因为对于任意一个包含 \\({v_1}, \ldots {v_k}\\) 的椭圆, 都可以找到另一个包含这些点但不可比 (相互包含) 的椭圆. 一个椭圆是极小的, 当且仅当它包含这些点并且没有更小 (完全被它包含) 的椭圆也包含这些点.
 
-    {{< figure src="/figures/cvx-3-ordering-separating-and-supporting/2-minimum-vs-minimal-in-symmetric-matrices.jpg" title="\({\mathcal{E} _ 1},{\mathcal{E} _ 3}\) 不是极小的, 因为存在包含这些点且比它们小的椭圆; \(\mathcal{E} _ 2\) 是极小的, 因为不存在包含这些点且被它包含的椭圆" >}}
+    {{< figure src="/figures/cvx-2-relationships/2-minimum-vs-minimal-in-symmetric-matrices.jpg" title="\({\mathcal{E} _ 1},{\mathcal{E} _ 3}\) 不是极小的, 因为存在包含这些点且比它们小的椭圆; \(\mathcal{E} _ 2\) 是极小的, 因为不存在包含这些点且被它包含的椭圆" >}}
 
-## 分离与支撑超平面
+---
+
+## <a name="分离与支撑超平面"></a>分离与支撑超平面
 这一节我们关注凸集之间的位置关系. 对于两个不相交的凸集, 我们总能找到某个超平面 (或者仿射函数) 将它们分离, 这就是 __超平面分离定理 (separating hyperplane theorem)__. 严格的叙述如下: 假设对于凸集 \\(C\\) 和 \\(D\\) 有 \\(C \cap D = \emptyset \\), 那么存在 \\(a \ne 0\\) 和 \\(b\\) 满足对于所有 \\(x \in C\\) 有 \\({a^T}x \le b\\), 对于所有 \\(x \in D\\) 有 \\({a^T}x \ge b\\). 这个描述等价于仿射函数 \\({a^T}x - b\\) 在 \\(C\\) 中非正, 而在 \\(D\\) 中非负. 超平面 \\({a^T}x = b\\) 称为集合 \\(C\\) 和 \\(D\\) 的 __分离超平面 (separating hyperplane)__.
 
-{{< figure src="/figures/cvx-3-ordering-separating-and-supporting/3-separating-hyperplane.jpg" title="总是存在超平面分离两个不相交的凸集" >}}
+{{< figure src="/figures/cvx-2-relationships/3-separating-hyperplane.jpg" title="总是存在超平面分离两个不相交的凸集" >}}
 
 - 仿射集与凸集的分离
 
     对于不相交的凸集 \\(C\\) 和仿射集 \\(D = \\{ {Fu + g \mid F \in {\mathbb{R}^{n \times m}},u \in {\mathbb{R}^m}} \\}\\), 根据超平面分离定理存在 \\(a \ne 0\\) 和 \\(b\\) 满足 \\({a^T}x \ge b\\) 对于所有 \\(x \in D\\) 都成立. 由此可知, 对于任意 \\({u \in {\mathbb{R}^m}}\\) 都有 \\({a^T}(Fu + g) \ge b \Rightarrow {a^T}Fu \ge b - {a^T}g\\). 注意不等式左侧是关于 \\(u\\) 的线性函数, 而线性函数在 \\({{\mathbb{R}^m}}\\) 上有 (下) 界当且仅当这个函数为 0. 因此, 对于任何 \\({u \in {\mathbb{R}^m}}\\) 有 \\({a^T}Fu = 0 \Rightarrow {a^T}F = 0 \Rightarrow b \le {a^T}g\\). 综上所述, 存在 \\(a \ne 0\\) 使得 \\({a^T}F = 0\\) 和 \\({a^T}x \le {a^T}g\\) 对于所有 \\(x \in C\\) 都成立, 也就是说存在超平面平行于仿射集且分离仿射集与凸集.
+
+---
 
 ## 对偶
 __对偶 (dual)__ 在优化领域是一个有趣且重要的关系. 对于向量, 集合, 运算, 甚至是优化问题, 我们都可以找到与之一一对应的对偶.
@@ -177,7 +186,7 @@ __谱范数 (spectral norm)__ 是两个 Euclidean 范数的算子范数, 定义�
 
     <details>
         <summary>证明: \(l _ p\)-范数的对偶</summary>
-        <p>令 \(1/p + 1/q = 1, \ p, q \in [1,\infty]\). 由 <a href="https://snowztail.com/cvx-4-convex-functions/#h%C3%B6lder-%E4%B8%8D%E7%AD%89%E5%BC%8F">Hölder 不等式</a> 可知, 对于任意 \(x,y \in \mathbb{R}^n\)</p>
+        <p>令 \(1/p + 1/q = 1, \ p, q \in [1,\infty]\). 由 <a href="https://snowztail.com/cvx-3-functions/#h%C3%B6lder-%E4%B8%8D%E7%AD%89%E5%BC%8F">Hölder 不等式</a> 可知, 对于任意 \(x,y \in \mathbb{R}^n\)</p>
         \begin{equation}
             \lvert{x^Ty}\rvert \le \lVert{x}\rVert _ p \lVert{y}\rVert _ q = \left(\sum _ i ^ n \lvert{x _ i}\rvert ^ p\right) ^ {1 / p} \left(\sum _ i ^ n \lvert{y _ i}\rvert ^ q\right) ^ {1 / q}
         \end{equation}
@@ -194,7 +203,7 @@ __谱范数 (spectral norm)__ 是两个 Euclidean 范数的算子范数, 定义�
 
 是它的 __对偶锥 (dual cone)__. \\(K^*\\) 由 \\(x\\) 的对偶向量 \\(y\\) 构成, 这里的对偶指 \\(x\\) 和 \\(y\\) 的夹角不超过 90 度. 每个 \\(y\\) 都可以看作是一个超平面的内法向量, 对偶锥是这些超平面的交集.
 
-{{< figure src="/figures/cvx-3-ordering-separating-and-supporting/4-dual-cone.jpg" title="锥 \(K\) 和它的对偶锥 \(K^*\)" >}}
+{{< figure src="/figures/cvx-2-relationships/4-dual-cone.png" title="锥 \(K\) 和它的对偶锥 \(K^*\), 其中对应边互相垂直" >}}
 
 - 子空间的对偶锥
 
@@ -252,7 +261,7 @@ __Farkas 引理 (Farkas' lemma)__ 是一个线性不等式组的可解性定理.
 从几何意义上看, Farkas 引理描述的是点和凸锥的位置关系 -- 点在锥内或边界 (\ref{1a}) 和点在锥外 (\ref{1b}). 我们知道矩阵 \\(A\\) 的行可以 [张成一个凸锥](https://snowztail.com/cvx-1-convex-sets/#%E5%A4%9A%E9%9D%A2%E4%BD%93) \\(K = \\{x \in \mathbb{R}^n \mid Ax \succeq 0\\}\\), 那么
 
 - 如果 \\(b\\) 在锥内或边界, 则 \\(b\\) 可以由 \\(A\\) 的行线性表示, 且由锥的定义可知其中系数 \\(x\\) 非负
-- 如果 \\(b\\) 在锥外, 由 [超平面分离定理](https://snowztail.com/cvx-3-ordering-separating-and-supporting/#%E5%88%86%E7%A6%BB%E4%B8%8E%E6%94%AF%E6%92%91%E8%B6%85%E5%B9%B3%E9%9D%A2) 可知, 存在过原点的平面 \\(y\\) 将凸锥 \\(A\\) 和锥外一点 \\(b\\) 分开
+- 如果 \\(b\\) 在锥外, 由 [超平面分离定理](#分离与支撑超平面) 可知, 存在过原点的平面 \\(y\\) 将凸锥 \\(A\\) 和锥外一点 \\(b\\) 分开
 
 __择一定理 (theorem of alternative)__ 指在多个系统中有且只有一个有解. Farkas 引理是择一定理的一个例子, 其中的两个系统由广义线性不等式约束. Farkas 引理的一个变体是:
 
@@ -300,7 +309,7 @@ __择一定理 (theorem of alternative)__ 指在多个系统中有且只有一�
     <p>假设对于所有 \(\lambda \succ _ {K ^ *} 0\), \(x\) 是在 \(z \in S\) 上极小化 \(\lambda ^ T z\) 的唯一解但不是 \(S\) 的最小元, 那么存在 \(z \in S, z \ne x, z \nsucceq _ K x\). 可知 \(z - x \nsucceq _ K 0\), 那么存在 \(\tilde{\lambda} \succ _ {K ^ *} 0\) 使得 \(\tilde{\lambda} ^ T (z - x) < 0\), 即 \(\tilde{\lambda} ^ T z < \tilde{\lambda} ^ T x\), 和 \(x\) 在 \(z \in S\) 上极小化 \(\lambda ^ T z\) 矛盾.</p>
 </details>
 
-{{< figure src="/figures/cvx-3-ordering-separating-and-supporting/5-minimum-element.png" title="由任意 \(\lambda \succ _ {K ^ *} 0\) 定义的严格支撑超平面 (群) 和集合相交于最小元" >}}
+{{< figure src="/figures/cvx-2-relationships/5-minimum-element.png" title="由任意 \(\lambda \succ _ {K ^ *} 0\) 定义的严格支撑超平面 (群) 和集合相交于最小元" >}}
 
 如果对于 __某个__ \\(\lambda \succ _ {K ^ *} 0\\), \\(x\\) 在 \\(z \in S\\) 上极小化 \\(\lambda ^ T z\\), 那么 \\(x\\) 是集合 \\(S \subseteq \mathbb{R} ^ m\\) 关于正常锥 \\(K\\) 的 __极小元__.
 
@@ -309,18 +318,18 @@ __择一定理 (theorem of alternative)__ 指在多个系统中有且只有一�
     <p>假设 \(\lambda \succ _ {K ^ *} 0\) 且 \(x\) 在 \(z \in S\) 上极小化 \(\lambda ^ T z\) 但不是 \(S\) 的极小元, 即存在 \(z \in S\) 满足 \(z \ne x, z \preceq _ K x\), 那么 \(\lambda ^ T (x - z) > 0\), 即 \(\lambda ^ T x > \lambda ^ T z\), 和 \(x\) 在 \(z \in S\) 上极小化 \(\lambda ^ T z\) 矛盾.</p>
 </details>
 
-{{< figure src="/figures/cvx-3-ordering-separating-and-supporting/6-minimal-element.png" title="由某个 \(\lambda \succ _ {K ^ *} 0\) 定义的严格支撑超平面和集合相交于极小元, 集合左下方的深色部分表示极小元的集合" >}}
+{{< figure src="/figures/cvx-2-relationships/6-minimal-element.png" title="由某个 \(\lambda \succ _ {K ^ *} 0\) 定义的严格支撑超平面和集合相交于极小元, 集合左下方的深色部分表示极小元的集合" >}}
 
 极小元的对偶性质反过来可以不成立: \\(S\\) 上的极小元 \\(x\\) 可以对于任意 \\(\lambda \succ _ {K ^ *} 0\\) 都不是 \\(z \in S\\) 上极小化 \\(\lambda ^ T z\\) 的解.
 
-{{< figure src="/figures/cvx-3-ordering-separating-and-supporting/7-minimal-element-in-nonconvex-set.png" title="当集合 \(S\) 非凸时, 极小元可能找不到对应的支撑超平面" >}}
+{{< figure src="/figures/cvx-2-relationships/7-minimal-element-in-nonconvex-set.png" title="当集合 \(S\) 非凸时, 极小元可能找不到对应的支撑超平面" >}}
 
 只有当集合 \\(S\\) 是凸集时, 对于任意极小元 \\(x\\), 存在非零的 \\(\lambda \succeq _ {K ^ *} 0\\) 使得 \\(x\\) 在 \\(z \in S\\) 上极小化 \\(\lambda ^ T z\\). 注意这里和前面相比多了一个分量可以等于零的条件.
 
-{{< figure src="/figures/cvx-3-ordering-separating-and-supporting/8-edge-cases.png" title="左: \(x _ 1 \in S _ 1\) 是极小的, 它对于 \(\lambda = (1, 0) \succeq 0\) 在所有 \(z \in S _ 1\) 中极小化了 \(\lambda ^ T z\). 右: \(x _ 2 \in S _ 2\) 不是极小的, 但也可能找到这样的超平面" >}}
+{{< figure src="/figures/cvx-2-relationships/8-edge-cases.png" title="左: \(x _ 1 \in S _ 1\) 是极小的, 它对于 \(\lambda = (1, 0) \succeq 0\) 在所有 \(z \in S _ 1\) 中极小化了 \(\lambda ^ T z\). 右: \(x _ 2 \in S _ 2\) 不是极小的, 但也可能找到这样的超平面" >}}
 
 几何上看, 最小元是集合中处于最左下位置的元素, 极小元在集合中找不到比它更加左下位置的元素 (可能左或下但不是同时). 极小元对应的方法称为 __Pareto 最优__. 比如, 对于一个资源分配问题, 如果 \\(a\\) 方法消耗的每一种资源都不比 \\(b\\) 方法多, 且至少有一种资源消耗更少 (即 \\(a \preceq b\\), \\(a \ne b\\)), 那么 \\(a\\) 方法比 \\(b\\) 方法更好. <strong>如果没有比 \\(a\\) 更好的方法, 那么 \\(a\\) 是 Pareto 最优的 (极好的但不一定是最好的)</strong>. 假设 \\(\lambda \succ 0\\) 代表资源的价格向量, 那么总成本为
 
 \\[\lambda^T x = \lambda _ 1 x _ 1 + \dots + \lambda _ n x _ n\\]
 
-{{< figure src="/figures/cvx-3-ordering-separating-and-supporting/9-pareto-optimal.png" title="深色曲线表示极小元的集合 (有效制造前沿), 极小元 \(x _ 2\) 比非极小元 \(x _ 4, x _ 5\) 要好, 但是对于任意价格向量 \(\lambda \succeq 0\) 都无法通过极小化总成本 \(\lambda^T x\) 得到 \(x _ 2\)" >}}
+{{< figure src="/figures/cvx-2-relationships/9-pareto-optimal.png" title="深色曲线表示极小元的集合 (有效制造前沿), 极小元 \(x _ 2\) 比非极小元 \(x _ 4, x _ 5\) 要好, 但是对于任意价格向量 \(\lambda \succeq 0\) 都无法通过极小化总成本 \(\lambda^T x\) 得到 \(x _ 2\)" >}}

@@ -155,6 +155,8 @@ __硬阈值函数 (hard thresholding function)__ 保留原向量幅值最大的 
 
 解决非凸问题 (\ref{1}) 往往需要穷举法: 对于 \\(s = 1,\dots,S\\), 遍历所有满足 \\(\forall \lvert\mathcal{I}\rvert = s\\) 的 \\(\mathcal{I}\\), 复杂度是 \\(\mathcal{O}(n^S)\\). 那么有没有其他方法获得稀疏解呢?
 
+---
+
 ## 贪心算法
 __贪心算法 (greedy algorithm)__ 是一类 __[启发式 (heuristic)](https://en.wikipedia.org/wiki/Heuristic)__ 算法, 它在每个阶段作出快速的局部最优选择, 并且期待据此能够得到全局最优解. 贪心算法在大多数问题中并不能够保证全局最优, 但是可以在短时间内得到一些比较好的解来逼近最优解.
 
