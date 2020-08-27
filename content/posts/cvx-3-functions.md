@@ -311,3 +311,15 @@ __Hölder 不等式__ 的求和形式是, 如果 \\(p > 1\\) 且 \\(1 / p + 1 / 
         \sum _ {i=1} ^ n {\lvert{x _ i y _ i}\rvert} \le \left(\sum _ i ^ n \lvert{x _ i}\rvert ^ p\right) ^ {1 / p} \left(\sum _ i ^ n \lvert{y _ i}\rvert ^ q\right) ^ {1 / q}
     \end{equation}
 </details>
+
+---
+
+## 共轭函数
+
+函数 \\(f(x) \colon \mathbb{R} ^ n \to \mathbb{R}\\) 的共轭函数定义为
+
+\\[f ^ * (y) = \sup _ {x \in \mathrm{dom}(f)} \left(y ^ T x - f(x)\right)\\]
+
+其中定义域 \\(\mathrm{dom}(f ^ * (y)) = \\{y \in \mathbb{R} ^ n \mid y ^ T x - f(x) < \infty, x \in \mathrm{dom}(f)\\}\\). 如果 \\(f\\) 可微, 最大差值点出现在 \\(f'(x) = y\\) 时. 无论 \\(f(x)\\) 是否是凸函数, 共轭函数 \\(f ^ *(y)\\) 都是凸函数, 因为它是一系列关于 \\(y\\) 的凸函数的逐点上确界.
+
+{{< figure src="/figures/cvx-3-functions/6-conjugate-function.png" title="对于每一个 \(y\) 的取值都有一条过原点的直线 \(xy\). \(f\) 的共轭函数在 \(y\) 点的取值定义为 \(y ^ T x\) 与 \(f(x)\) 的最大差值 (注意差值的正负号)" >}}
