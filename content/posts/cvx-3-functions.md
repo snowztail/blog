@@ -167,7 +167,7 @@ featured_image:
 - __二次线性分式 (quadratic-over-linear)__ \\(x ^ 2 / y\\): \\(x \in \mathbb{R}, y \in \mathbb{R} _ {++}\\)
 - __矩阵分式 (matrix fractional)__ \\(x ^ T Y ^ {-1} x\\): \\(x \in \mathbb{R} ^ n, Y \in \mathbb{S} _ {++} ^ n\\)
 - __指数和的对数 (log-sum-exp)__ \\(\log{(\sum _ {i=1} ^ n {e ^ {x _ i}})}\\): \\(x \in \mathbb{R} ^ n\\)
-- 从 \\(q\\) 到 \\(p\\) 的 __KL 散度 (Kullback-Leibler divergence)__ \\(\sum _ {i=1} ^ n {p _ i \log{(p _ i / q _ i)}}\\): \\(p, q \in \mathbb{R} _ +\\)
+- 从 \\(q\\) 到 \\(p\\) 的 __相对熵 (relative entropy)__ \\(\sum _ {i=1} ^ n {p _ i \log{(p _ i / q _ i)}}\\): \\(p, q \in \mathbb{R} _ +\\)
 
 以下函数是凹函数:
 - __对数 (logarithm)__ \\(\log{(x)}\\): \\(x \in \mathbb{R} _ {++}\\)
