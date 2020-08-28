@@ -323,3 +323,122 @@ __Hölder 不等式__ 的求和形式是, 如果 \\(p > 1\\) 且 \\(1 / p + 1 / 
 其中定义域 \\(\mathrm{dom}(f ^ * (y)) = \\{y \in \mathbb{R} ^ n \mid y ^ T x - f(x) < \infty, x \in \mathrm{dom}(f)\\}\\). 如果 \\(f\\) 可微, 最大差值点出现在 \\(f'(x) = y\\) 时. 无论 \\(f(x)\\) 是否是凸函数, 共轭函数 \\(f ^ *(y)\\) 都是凸函数, 因为它是一系列关于 \\(y\\) 的凸函数的逐点上确界.
 
 {{< figure src="/figures/cvx-3-functions/6-conjugate-function.png" title="对于每一个 \(y\) 的取值都有一条过原点的直线 \(xy\). \(f\) 的共轭函数在 \(y\) 点的取值定义为 \(y ^ T x\) 与 \(f(x)\) 的最大差值 (注意差值的正负号)" >}}
+
+考虑下面一些函数的共轭函数:
+
+- 仿射函数
+
+    \\(f(x) = ax + b\\) 的共轭函数是 \\(f ^ * = \sup _ {x \in \mathbb{R}} \\{y x - a x - b\\}\\), 当且仅当 \\(y = a\\) 时有界. 所以共轭函数的定义域为 \\(\mathrm{dom}(f ^ *) = \\{a\\}\\), 且 \\(f ^ *(a) = -b\\).
+
+- 负对数函数
+
+    \\(f(x) = -\log(x)\\) 的共轭函数是 \\(f ^ * = \sup _ {x \in \mathbb{R} _ {++}} \\{y x + \log(x)\\}\\), 当 \\(y < 0\\) 时有上界, 在 \\(x = - 1 / y\\) 处取得最大值. 所以共轭函数的定义域为 \\(\mathrm{dom}(f ^ *) = \mathbb{R} _ {\-\-}\\), 对应 \\(f ^ *(y) = -\log(-y) - 1\\).
+
+- 指数函数
+
+    \\(f(x) = e ^ x\\) 的共轭函数是 \\(f ^ * = \sup _ {x \in \mathbb{R}} \\{y x - e ^ x\\}\\), 当 \\(y \ge 0\\) 时有上界, 当 \\(y > 0\\) 时在 \\(x = \log(y)\\) 处取得最大值 \\(f ^ * = y \log(y) - y\\), 当 \\(y = 0\\) 时有上确界 \\(0\\). 所以共轭函数的定义域为 \\(\mathrm{dom}(f ^ *) = \mathbb{R} _ {+}\\), 对应 \\(f ^ *(y) = y \log(y) - y\\) (这里定义 \\(0 \log(0) = 0\\)).
+
+- 负熵函数
+
+    \\(f(x) = x\log(x)\\) 的共轭函数是 \\(f ^ * = \sup _ {x \in \mathbb{R} _ {+}} \\{y x - x\log(x)\\}\\) (这里定义 \\(0 \log(0) = 0\\)), 对任意 \\(y\\) 在 \\(x = e ^ {y - 1}\\) 处取得最大值. 所以共轭函数的定义域为 \\(\mathrm{dom}(f ^ *) = \mathbb{R}\\), 对应 \\(f ^ *(y) = e ^ {y - 1}\\).
+
+- 反函数
+
+    \\(f(x) = 1 / x, x \in \mathbb{R} _ {++}\\) 的共轭函数是 \\(f ^ * = \sup _ {x \in \mathbb{R} _ {++}} \\{y x - 1 / x\\}\\), 当 \\(y \le 0\\) 时有上界, 当 \\(y < 0\\) 时在 \\(x = (-y) ^ {-1 / 2}\\) 处取得最大值 \\(-2(-y) ^ {1 / 2}\\), 在 \\(y = 0\\) 时在 \\(x = \infty\\) 处有上确界 \\(0\\). 所以共轭函数的定义域为 \\(\mathrm{dom}(f ^ *) = \mathbb{R} _ {-}\\), 对应 \\(f ^ *(y) = -2(-y) ^ {1 / 2}\\).
+
+- 严格凸的二次函数
+
+    \\(f(x) = (1 / 2) x ^ T Q x, Q \in \mathbb{S} _ {++} ^ n\\) 的共轭函数是 \\(f ^ * = \sup _ {x \in \mathbb{R} ^ n} \\{y ^ T x - (1 / 2) x ^ T Q x\\}\\), 对任意 \\(y \in \mathbb{R} ^ n\\) 在 \\(x = Q ^ {-1} y\\) 处取得最大值. 所以共轭函数的定义域为 \\(\mathrm{dom}(f ^ *) = \mathbb{R} ^ n\\), 对应 \\(f ^ *(y) = (1 / 2) y ^ T Q ^ {-1} y\\).
+
+- 对数 - 行列式
+
+    \\(f(X) = \log\det(X ^ {-1}),X \in \mathbb{S} _ {++} ^ n\\) 的共轭函数是 \\(f ^ * = \sup _ {X \succ 0} \\{\mathrm{tr}(YX) + \log\det(X)\\}\\), 当 \\(Y \prec 0\\) 时在 \\(\nabla _ {X} (\mathrm{tr}(YX) + \log\det(X)) = Y + X ^ {-1} = 0\\) 处, 即 \\(X = -Y ^ {-1}\\) 处取得最大值. 所以共轭函数的定义域为 \\(\mathrm{dom}(f ^ *) = -\mathbb{S} _ {++} ^ n\\), 对应 \\(f ^ *(Y) = \log\det(-Y) ^ {-1} - n\\).
+
+- 示性函数
+
+    集合 \\(C \subseteq \mathbb{R} ^ n\\) 的 __示性函数 (indicator function)__ 定义为
+
+    \begin{equation}
+        I _ C (x) =
+        \begin{cases}
+            0, & x \in C\newline
+            \infty, & x \notin C
+        \end{cases}
+    \end{equation}
+
+    示性函数的共轭函数是
+
+    \\[I _ C ^ * (y) = \sup _ {x \in C} \\{y ^ T x\\} = S _ C(y)\\]
+
+    也就是说, 集合的示性函数的共轭函数是集合的 [支撑函数](https://snowztail.com/cvx-4-operations/#逐点最大值).
+
+- 范数
+
+    记 \\(\lVert{\cdot}\rVert\\) 为 \\(\mathbb{R} ^ n\\) 上的范数, 其对偶范数记为 \\(\lVert{\cdot}\rVert _ *\\).
+
+    - 当 \\(\lVert{y}\rVert _ * > 1\\) 时, 由 [定义](https://snowztail.com/cvx-4-operations/#对偶范数) 可知存在 \\(z \in \mathbb{R} ^ n\\) 满足 \\(\lVert{z}\rVert \le 1\\), \\(y ^ T z > 1\\). 所以 \\(y ^ T x - \lVert{x}\rVert = t(y ^ T z - \lVert{z}\rVert) \to \infty\\) 当 \\(t \to \infty\\) 时成立, 即 \\(f ^ * (y) = \infty\\).
+
+    - 当 \\(\lVert{y}\rVert _ * \le 1\\) 时, 对任意 \\(x\\) 有 \\(y ^ T x \le \lVert{x}\rVert \lVert{y}\rVert _ *\\), 即 \\(y ^ T x - \lVert{x}\rVert \le 0\\). 所以 \\(x = 0\\) 时有 \\(f ^ * (y) = 0\\).
+
+    所以, 范数的共轭函数是
+
+    \begin{equation}
+        f ^ * (y) =
+        \begin{cases}
+            0, & \lVert{y}\rVert _ * \le 1\newline
+            \infty, & \lVert{y}\rVert _ * > 1
+        \end{cases}
+    \end{equation}
+
+- 范数平方
+
+    考虑 \\(f(x) = (1 / 2) \lVert{x}\rVert ^ 2\\). 因为 \\(y ^ T x \le \lVert{y}\rVert _ * \lVert{x}\rVert\\), 所以
+
+    \\[y ^ T x - (1 / 2) \lVert{x}\rVert ^ 2 \le \lVert{y}\rVert _ * \lVert{x}\rVert - (1 / 2) \lVert{x}\rVert ^ 2\\]
+
+    不等式右侧是关于 \\(\lVert{x}\rVert\\) 的二次函数, 最大值为 \\((1 / 2) \lVert{y}\rVert _ * ^ 2\\), 所以对于任意 \\(x\\) 都有
+
+    \\[y ^ T x - (1 / 2) \lVert{x}\rVert ^ 2 \le (1 / 2) \lVert{y}\rVert _ * ^ 2\\]
+
+    即 \\(f ^ * (y) \le (1 / 2) \lVert{y}\rVert _ * ^ 2\\). 此外, 假设 \\(x\\) 满足 \\(y ^ T x = \lVert{y}\rVert _ * \lVert{x}\rVert\\), 对其伸缩使得 \\(\lVert{x}\rVert = \lVert{y}\rVert _ *\\), 所以这个 \\(x\\) 满足
+
+    \\[y ^ T x - (1 / 2) \lVert{x}\rVert ^ 2 = (1 / 2) \lVert{y}\rVert _ * ^ 2\\]
+
+    即 \\(f ^ * (y) \ge (1 / 2) \lVert{y}\rVert _ * ^ 2\\). 所以, 范数平方 \\(f(x) = (1 / 2) \lVert{x}\rVert ^ 2\\) 的共轭函数是 \\(f ^ * (y) = (1 / 2) \lVert{y}\rVert _ * ^ 2\\).
+
+### Fenchel 不等式
+由共轭函数的定义可知,
+
+\\[f(x) + f ^ * (y) \ge x ^ T y\\]
+
+对于任意 \\(x, y\\) 都成立. 这个不等式称为 __Fenchel 不等式__. 例如, 当 \\(Q \in \mathbb{S} _ {++} ^ n\\) 时, \\(f(x) = (1 / 2)x ^ T Q x\\) 对应的 Fenchel 不等式是 \\((1 / 2) x ^ T Q x + (1 / 2) y ^ T Q ^ {-1} y \ge x ^ T y\\).
+
+### 双重共轭
+如果 \\(f\\) 是凸函数且 \\(f\\) 是 [闭](https://en.wikipedia.org/wiki/Closed_convex_function) 的 (即所有的 \\(\alpha\\) - 下水平集 \\(C _ {\alpha}\\) 或上境图 \\(\mathrm{epi}(f)\\) 是闭集), 那么它的共轭函数的共轭函数是原函数 (\\(f ^ {**} = f\\)).
+
+### 可微函数
+称可微函数 \\(f\\) 的共轭函数为 \\(f\\) 的 Legendre 变换, 一般函数 \\(f\\) 的共轭函数为 \\(f\\) 的 Fenchel 变换. 如果 \\(f\\) 是可微的凸函数且 \\(\mathrm{dom}(f) = \mathbb{R} ^ n\\), 那么共轭函数对应的 \\(x ^ {\star}\\) 满足 \\(y = \nabla f(x ^ {\star})\\). 所以
+
+\\[f ^ * (y) = (x ^ {\star}) ^ T \nabla f(x ^ {\star}) - f(x ^ {\star})\\]
+
+这样一来, 对于给定 \\(y\\) 解 \\(f ^ * (y)\\) 的问题就转化为解关于 \\(z\\) 的梯度方程 \\(y = \nabla f(z)\\), 也就是
+
+\\[f ^ * (y) = z ^ T \nabla f(z) - f(z)\\]
+
+### 伸缩和复合仿射变换
+当 \\(a > 0, b \in \mathbb{R}\\) 时, \\(g(x) = a f(x) + b\\) 的共轭函数是
+
+\\[g ^ * (y) = a f ^ * (y / a) - b\\]
+
+当 \\(A \in \mathbb{R} ^ {n \times n}, A \succ 0, b \in \mathbb{R} ^ n\\) 时, \\(g(x) = f(Ax + b)\\) 的共轭函数是
+
+\\[g ^ * (y) = f ^ * (A ^ {-T} y) - b ^ T A ^ {-T} y\\]
+
+其中 \\(\mathrm{dom}(g ^ *) = A ^ T \mathrm{dom}(f ^ *)\\).
+
+### 独立函数的和
+如果 \\(f(u, v) = f _ 1(u) + f _ 2(u)\\) 且 \\(f _ 1, f _ 2\\) 是凸函数, 那么
+
+\\[f ^ * (w, z) = f _ 1 ^ * (w) + f _ 2 ^ * (z)\\]
+
+也就是说, 独立 (自变量不同) 的凸函数的和的共轭函数是各凸函数共轭函数的和.

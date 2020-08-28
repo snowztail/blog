@@ -170,22 +170,22 @@ __谱范数 (spectral norm)__ 是两个 Euclidean 范数的算子范数, 定义�
 
 它测量 \\(z\\) 作为一个线性变换的影响, 表示变换结果 \\(z^Tx\\) 相比与原范数 \\(\lVert x \rVert\\) 的最大比值. 由定义可知,不等式 \\(z^Tx \le \lVert x \rVert \lVert z \rVert_*\\) 对于所有的 \\(z,x\\) 都成立, 且存在 \\(x\\) 使等式成立. 对偶范数的对偶是原范数: \\(\lVert z \rVert _{**} = \lVert z \rVert\\).
 
-- \\(l _ 1\\)-范数的对偶
+- \\(\ell _ 1\\)-范数的对偶
 
-    \\(l _ 1\\)-范数的对偶是 \\(l _ \infty\\)-范数. 由对偶范数的定义, \\(\lVert z \rVert _ {1,* } = \sup\\{z^Tx \mid \lVert x \rVert _ 1 \le 1\\} = \mathrm{max}\\{\lvert z_1 \rvert, \dots, \lvert z_n \rvert\\} = \lVert z \rVert _ \infty\\).
+    \\(\ell _ 1\\)-范数的对偶是 \\(\ell _ \infty\\)-范数. 由对偶范数的定义, \\(\lVert z \rVert _ {1,* } = \sup\\{z^Tx \mid \lVert x \rVert _ 1 \le 1\\} = \mathrm{max}\\{\lvert z_1 \rvert, \dots, \lvert z_n \rvert\\} = \lVert z \rVert _ \infty\\).
 
-- \\(l _ 2\\)-范数的对偶
+- \\(\ell _ 2\\)-范数的对偶
 
-    在 \\(\mathbb{R}^n\\) 上的 \\(l _ 2\\)-范数 (Euclidean 范数) 的对偶是它本身. 由 Cauchy–Schwarz 不等式可知, \\(\lVert z \rVert _ {2,*} = \sup _ {x \ne 0} z^Tx/\lVert x \rVert_2 = \lVert z \rVert_2\\).
+    在 \\(\mathbb{R}^n\\) 上的 \\(\ell _ 2\\)-范数 (Euclidean 范数) 的对偶是它本身. 由 Cauchy–Schwarz 不等式可知, \\(\lVert z \rVert _ {2,*} = \sup _ {x \ne 0} z^Tx/\lVert x \rVert_2 = \lVert z \rVert_2\\).
 
-    在 \\(\mathbb{R}^{m \times n}\\) 上的 \\(l _ 2\\)-范数 (谱范数) 的对偶是 __核范数 (nuclear norm)__ 即矩阵的奇异值之和. 根据对偶范数的定义, \\(\lVert Z \rVert _ {2,* } = \sup\\{\mathrm{tr}(Z^TX) \mid \lVert X \rVert _ 2 \le 1\\}\\), 其中 \\(\lVert X \rVert _ 2 \le 1 \Rightarrow \sigma _ {\mathrm{max}}(X) \le 1 \Rightarrow \sigma _ 1(X), \dots, \sigma _ r(X) = 1\\), 所以 \\(\lVert Z \rVert _ {2, *} = \sigma _ 1(Z) + \dots + \sigma _ r(Z)\\).
+    在 \\(\mathbb{R}^{m \times n}\\) 上的 \\(\ell _ 2\\)-范数 (谱范数) 的对偶是 __核范数 (nuclear norm)__ 即矩阵的奇异值之和. 根据对偶范数的定义, \\(\lVert Z \rVert _ {2,* } = \sup\\{\mathrm{tr}(Z^TX) \mid \lVert X \rVert _ 2 \le 1\\}\\), 其中 \\(\lVert X \rVert _ 2 \le 1 \Rightarrow \sigma _ {\mathrm{max}}(X) \le 1 \Rightarrow \sigma _ 1(X), \dots, \sigma _ r(X) = 1\\), 所以 \\(\lVert Z \rVert _ {2, *} = \sigma _ 1(Z) + \dots + \sigma _ r(Z)\\).
 
-- \\(l _ p\\)-范数的对偶
+- \\(\ell _ p\\)-范数的对偶
 
-    \\(l _ p\\)-范数的对偶是 \\(l _ q\\)-范数, 其中 \\(q\\) 满足 \\(1/p + 1/q = 1\\).
+    \\(\ell _ p\\)-范数的对偶是 \\(\ell _ q\\)-范数, 其中 \\(q\\) 满足 \\(1/p + 1/q = 1\\).
 
     <details>
-        <summary>证明: \(l _ p\)-范数的对偶</summary>
+        <summary>证明: \(\ell _ p\)-范数的对偶</summary>
         <p>令 \(1/p + 1/q = 1, \ p, q \in [1,\infty]\). 由 <a href="https://snowztail.com/cvx-3-functions/#h%C3%B6lder-%E4%B8%8D%E7%AD%89%E5%BC%8F">Hölder 不等式</a> 可知, 对于任意 \(x,y \in \mathbb{R}^n\)</p>
         \begin{equation}
             \lvert{x^Ty}\rvert \le \lVert{x}\rVert _ p \lVert{y}\rVert _ q = \left(\sum _ i ^ n \lvert{x _ i}\rvert ^ p\right) ^ {1 / p} \left(\sum _ i ^ n \lvert{y _ i}\rvert ^ q\right) ^ {1 / q}
