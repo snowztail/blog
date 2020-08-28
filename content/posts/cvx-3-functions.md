@@ -400,9 +400,9 @@ __Hölder 不等式__ 的求和形式是, 如果 \\(p > 1\\) 且 \\(1 / p + 1 / 
 
     \\[y ^ T x - (1 / 2) \lVert{x}\rVert ^ 2 \le (1 / 2) \lVert{y}\rVert _ * ^ 2\\]
 
-    即 \\(f ^ * (y) \le (1 / 2) \lVert{y}\rVert _ * ^ 2\\). 此外, 假设 \\(x\\) 满足 \\(y ^ T x = \lVert{y}\rVert _ * \lVert{x}\rVert\\), 对其伸缩使得 \\(\lVert{x}\rVert = \lVert{y}\rVert _ *\\), 所以这个 \\(x\\) 满足
+    即 \\(f ^ * (y) \le (1 / 2) \lVert{y}\rVert _ * ^ 2\\). 此外, 假设 \\(x\\) 满足 \\(y ^ T x = \lVert{y}\rVert _ * \lVert{x}\rVert\\), 其中 (通过伸缩) 令 \\(\lVert{x}\rVert = \lVert{y}\rVert _ *\\), 那么这个 \\(x\\) 满足
 
-    \\[y ^ T x - (1 / 2) \lVert{x}\rVert ^ 2 = (1 / 2) \lVert{y}\rVert _ * ^ 2\\]
+    \\[y ^ T x = \lVert{y}\rVert _ * ^ 2 = \lVert{x}\rVert ^ 2 \Rightarrow  y ^ T x - (1 / 2) \lVert{x}\rVert ^ 2 = (1 / 2) \lVert{y}\rVert _ * ^ 2\\]
 
     即 \\(f ^ * (y) \ge (1 / 2) \lVert{y}\rVert _ * ^ 2\\). 所以, 范数平方 \\(f(x) = (1 / 2) \lVert{x}\rVert ^ 2\\) 的共轭函数是 \\(f ^ * (y) = (1 / 2) \lVert{y}\rVert _ * ^ 2\\).
 
