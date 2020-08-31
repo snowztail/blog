@@ -11,7 +11,7 @@ tags:
 featured_image:
 ---
 
-这一章介绍凸函数的性质.
+这一章介绍一些常用函数及它们的性质.
 
 ## 凸函数
 如果函数 \\(f \colon \mathbb{R} ^ n \to \mathbb{R}\\) 同时满足:
@@ -31,12 +31,10 @@ featured_image:
 仿射函数是且仅是唯一既凹又凸的函数.
 </blockquote>
 
----
-
-## 判断条件
+### 判断条件
 除定义外, 常用以下几个条件来判断函数凹凸性.
 
-### 和定义域相交的直线
+#### 和定义域相交的直线
 对于所有的 \\(x \in \mathrm{dom}(f)\\) 和 \\(v \in \mathbb{R} ^ n\\), 关于 \\(t \in \mathbb{R}\\) 的函数 \\(g(t)=f(x+tv)\\) 在它的定义域 \\(\mathrm{dom}(g)=\\{t \mid x+tv \in \mathrm{dom}(f)\\}\\) 上是凸函数.
 
 <blockquote cite="在直线上判断凹凸性">
@@ -67,7 +65,7 @@ featured_image:
 
 {{< figure src="/figures/cvx-3-functions/2-functions-restricted-to-lines.png" title="两个在 \(\mathbb{R}^2\) 上的函数, 在 \(xy\) 平面上任意画一条直线. 左: 在这条直线上总是凸函数 (开口向上的抛物线); 右: 在这条直线上可能是凹函数 (开口向下的抛物线)" >}}
 
-### 一阶条件
+#### 一阶条件
 如果函数 \\(f\\) 是可微的 (即梯度 \\(\nabla{f}\\) 在开集 \\(\mathrm{dom}(f)\\) 内处处存在), 那么 \\(f\\) 是凸函数当且仅当
 
 - \\(\mathrm{dom}(f)\\) 是凸集
@@ -128,7 +126,7 @@ featured_image:
 可微凸函数的全局极小点是梯度为零的点.
 </blockquote>
 
-### 二阶条件
+#### 二阶条件
 如果函数 \\(f\\) 是二阶可微的 (即 [Hessian 矩阵](https://en.wikipedia.org/wiki/Hessian_matrix) \\(\nabla ^ 2 {f}\\) 在开集 \\(\mathrm{dom}(f)\\) 内处处存在), 那么 \\(f\\) 是凸函数当且仅当
 
 - \\(\mathrm{dom}(f)\\) 是凸集
@@ -244,7 +242,7 @@ featured_image:
 
 {{< figure src="/figures/cvx-3-functions/5-epigraph-and-convex-function.png" title="法向量为 \((\nabla{f(x)}, -1)\) 的超平面在边界点 \((x, f(x))\) 支撑 \(\mathrm{epi}(f)\)" >}}
 
-### Jensen 不等式
+### <a name="Jensen不等式"></a>Jensen 不等式
 __Jensen 不等式__ 可以看作凸函数性质的推广. 如果 \\(f\\) 是凸函数, \\(x _ 1, \dots, x _ k \in \mathrm{dom}(f)\\), \\(\theta _ 1, \dots, \theta _ k \ge 0\\), \\(\sum _ {i=1} ^ k {\theta _ i} = 1\\), 那么
 
 \\[f\left(\sum _ {i=1} ^ k {\theta _ i x _ i}\right) \le \sum _ {i=1} ^ k \theta _ i f(x _ i)\\]
@@ -442,3 +440,119 @@ __Hölder 不等式__ 的求和形式是, 如果 \\(p > 1\\) 且 \\(1 / p + 1 / 
 \\[f ^ * (w, z) = f _ 1 ^ * (w) + f _ 2 ^ * (z)\\]
 
 也就是说, 独立 (自变量不同) 的凸函数的和的共轭函数是各凸函数共轭函数的和.
+
+---
+
+## 拟凸函数
+
+我们知道凸函数的下水平集都是凸集, 但下水平集都是凸集的函数不一定是凸函数. 如果函数 \\(f \colon \mathbb{R} ^ n \to \mathbb{R}\\) 的定义域 \\(\mathrm{dom}(f)\\) 和所有下水平集 \\(S _ {\alpha} = \\{x \in \mathrm{dom}(f) \mid f(x) \le \alpha, \forall \alpha \in \mathbb{R}\\}\\) 都是凸集, 那么称 \\(f\\) 为 __拟凸函数 (quasiconvex function)__.
+
+凸函数是拟凸函数, 但拟凸函数不一定是凸函数. 如果 \\(-f\\) 是拟凸函数, 那么 \\(f\\) 是拟凹函数, 即 \\(\\{x \in \mathrm{dom}(f) \mid f(x) \ge \alpha\\}\\) 是凸集. 如果 \\(f\\) 既是拟凸函数又是拟凹函数, 那么称 \\(f\\) 为拟线性函数, 即 \\(\\{x \in \mathrm{dom}(f) \mid f(x) = \alpha\\}\\) 是凸集. 在 \\(\mathbb{R}\\) 上的拟凸函数的所有下水平集都是一个区间, 且区间数量只能是一个.
+
+{{< figure src="/figures/cvx-3-functions/7-quasiconvex-function.png" title="拟凸函数 \(f\) 的下水平集 \(S _ {\alpha} = [a, b], S _ {\beta} = (-\infty, c]\) 都是一个区间" >}}
+
+下面是一些拟凸函数:
+
+- 对数函数 \\(\log(x)\\)
+
+    \\(\alpha\\) - 下水平集为 \\((0, e ^ {\alpha}]\\), \\(\alpha\\) - 上水平集为 \\([e ^ {\alpha}, \infty)\\). 它们都是凸集, 所以对数函数是拟线性函数 (且是凹函数).
+
+- 上取整函数 \\(\mathrm{ceil}(x) = \inf\\{z \in \mathbb{Z} \mid z \ge x\\}\\)
+
+    \\(\alpha\\) - 下水平集为 \\((-\infty, \mathrm{ceil}(\alpha) - 1]\\), \\(\alpha\\) - 上水平集为 \\((\mathrm{ceil}(\alpha) - 1, \infty)\\). 它们都是凸集, 所以上取整函数是拟线性函数 (且是非凹非凸函数).
+
+- 二元函数 \\(f(x) = x _ 1 x _ 2\\), \\(\mathrm{dom}(f) = \mathbb{R} _ + ^ 2\\)
+
+    \\(f\\) 是非凹非凸函数, 因为 \\(\nabla ^ 2 f(x) = \left[\begin{smallmatrix} 0 & 1\newline1 & 0 \end{smallmatrix}\right]\\) 的特征值是 -1 和 1. 它的 \\(\alpha\\) - 上水平集为 \\(\\{x \in \mathbb{R} _ + ^ 2 \mid x _ 1 x _ 2 \ge \alpha\\}\\), 是一个凸集 (即 \\(x _ 2 = 1 / x _ 1\\) 在第一象限图像的右上部分), 所以 \\(f\\) 是拟凹函数 (且是非凹非凸函数).
+
+- 线性分式函数 \\(f(x) = {(a ^ T x + b)}/{(c ^ T x + d)}\\), \\(\mathrm{dom}(f) = \\{x \mid c ^ T x + d > 0\\}\\)
+
+    \\(\alpha\\) - 下水平集为 \\(\\{x \mid c ^ T x + d > 0, a ^ T x + b \le \alpha(c ^ T x + d)\\}\\), \\(\alpha\\) - 上水平集为 \\(\\{x \mid c ^ T x + d > 0, a ^ T x + b \ge \alpha(c ^ T x + d)\\}\\). 它们作为开半空间和闭半空间的交集都是凸集, 所以线性分式函数是拟线性函数 (且是凸函数).
+
+### 性质
+
+拟凸函数存在一些类似于凸函数的性质. 函数 \\(f\\) 是拟凸函数的充要条件是
+
+- \\(f\\) 的定义域 \\(\mathrm{dom}(f)\\) 是凸集
+- 对于所有的 \\(x, y \in \mathrm{dom}(f)\\) 和 \\(\theta \in [0, 1]\\), 都满足
+
+\\[f(\theta x + (1 - \theta) y) \le \max\\{f(x), f(y)\\}\\]
+
+作为 [Jensen 不等式](#Jensen不等式) 的变体, 不等式表明定义域内两点连线上任意一点的函数值不超过端点函数值中的最大值.
+
+{{< figure src="/figures/cvx-3-functions/8-quasiconvex-function-property.png" title="定义域内两点连线上任意一点的函数值不超过端点函数值中的最大值" >}}
+
+\\(\mathbb{R}\\) 上的连续函数 \\(f \colon \mathbb{R} \to \mathbb{R}\\) 是拟凸函数, 当且仅当以下条件之一成立:
+
+- \\(f\\) 是非增函数
+- \\(f\\) 是非减函数
+- 存在 \\(c \in \mathrm{dom}(f)\\) 使得对于任意 \\(t \in \mathrm{dom}(f)\\) 满足, \\(f\\) 在 \\(t \le c\\) 是非增函数, 且在 \\(t \ge c\\) 是非减函数
+
+{{< figure src="/figures/cvx-3-functions/9-quasiconvex-function-example.png" title="拟凸函数 \(f\) 在 \((-\infty, c]\) 非增, 在 \([c, \infty)\) 非减" >}}
+
+### 判断条件
+类似于凸函数, 拟凸函数也有以下判断条件.
+
+#### 和定义域相交的直线
+函数的拟凸性等价于和定义域相交直线上的函数的拟凸性.
+
+#### 一阶条件
+
+如果函数 \\(f\\) 是可微的, 那么 \\(f\\) 是拟凸函数当且仅当
+
+- \\(\mathrm{dom}(f)\\) 是凸集
+- 对于所有 \\(x, y \in \mathrm{dom}(f)\\) 都满足
+
+\\[f(y) \ge f(x) \Rightarrow \nabla{f(x)} ^ T (y - x) \le 0\\]
+
+从几何上看, 当 \\(\nabla{f(x)} \ne 0\\) 时, \\(\nabla{f(x)}\\) 定义了一个关于下水平集 \\(\\{y \mid f(y) \le f(x)\\}\\) 在 \\(x\\) 处的支撑超平面. 不同于凸函数的情况, \\(\nabla{f(x)} = 0\\) 并不能说明 \\(x\\) 是 \\(f\\) 的全局最小点.
+
+{{< figure src="/figures/cvx-3-functions/10-gradient-and-sublevel-sets.png" title="\(\nabla{f(x)}\) 定义了一个关于下水平集 \(\{y \mid f(y) \le f(x)\}\) 在 \(x\) 处的支撑超平面" >}}
+
+#### 二阶条件
+如果函数 \\(f\\) 是二阶可微的, 那么 \\(f\\) 是拟凸函数当且仅当
+
+- \\(\mathrm{dom}(f)\\) 是凸集
+- 对于所有的 \\(x \in \mathrm{dom}(f)\\) 和 \\(y \in \mathbb{R} ^ n\\), 都有
+
+\\[y ^ T \nabla{f(x)} = 0 \Rightarrow y ^ T \nabla ^ 2{f(x)} y \ge 0\\]
+
+可知如果 \\(\nabla{f(x)} = 0\\), 那么 \\(\nabla ^ 2 {f(x)} \succeq 0\\); 如果 \\(\nabla{f(x)} \ne 0\\), 那么 \\(\nabla ^ 2 {f(x)}\\) 在由 \\(\nabla{f(x)} ^ {\vert}\\) 定义的 \\((n-1)\\) 维子空间上是半正定的, 所以 \\(\nabla ^ 2{f(x)}\\) 最多只有一个负的特征值.
+
+对于定义在 \\(\mathbb{R}\\) 上的函数 \\(f\\), 不等式条件简化为
+
+\\[f'(x) = 0 \Rightarrow f''(x) \ge 0\\]
+
+即在任何斜率为 0 的点, 二阶导数都是非负的.
+
+### 由拟凸函数下水平集构造的凸函数
+
+拟凸函数 \\(f\\) 的下水平集是凸集, 这个凸集可以用关于凸函数 \\(\phi _ t (x)\\) 的不等式来表示. 我们想要找到凸函数 \\(\phi _ t (x) \colon \mathbb{R} ^ n \to \mathbb{R}\\) 满足
+
+\\[f(x) \le t \Leftrightarrow \phi _ t(x) \le 0\\]
+
+也就是说, 拟凸函数 \\(f\\) 的 \\(t\\) - 下水平集是凸函数 \\(\phi _ t (x)\\) 的 0 - 下水平集. 凸函数 \\(\phi _ t (x)\\) 需要满足, 当 \\(s \ge t\\) 时, 由 \\(\phi _ t(x) \le 0 \\) 可推出 \\(\phi _ s(x) \le 0\\), 即当 \\(s \ge t\\) 时, \\(\phi _ s(x) \le \phi _ t(x)\\). 也就是说, \\(\phi _ t(x)\\) 是 \\(t\\) 的非增函数.
+
+{{< figure src="/figures/cvx-3-functions/11-quasiconvex-and-convex-functions.png" title="由拟凸函数 \(f\) 的 \(t\) - 下水平集构造的凸函数 \(\phi _ t(x)\) 是 \(t\) 的非增函数" >}}
+
+\\(\phi _ t (x)\\) 的选择不是唯一的, 一种可行的方式是选取 \\(f\\) 的 \\(t\\) - 下水平集的示性函数
+
+\begin{equation}
+    \phi _ t (x) =
+    \begin{cases}
+                0, & f(x) \le t\newline
+                \infty, & f(x) > t
+    \end{cases}
+\end{equation}
+
+如果 \\(f\\) 的 \\(t\\) - 下水平集是闭集, 也可以选取
+
+\\[\phi _ t(x) = \mathrm{dist}(x, \\{z \mid f(z) \le t\\})\\]
+
+- 凸函数和凹函数的比值
+
+    设 \\(p, q\\) 分别是凸函数和凹函数, 且在凸集 \\(C\\) 上有 \\(p(x) \ge 0\\), \\(q(x) > 0\\). 定义在 \\(C\\) 上的函数 \\(f(x) = p(x) / q(x)\\) 是拟凸函数. 因为
+
+    \\[f(x) \le t \Leftrightarrow p(x) - t q(x) \le 0\\]
+
+    所以可以选取 \\(\phi _ t (x) = p(x ) - t q(x), t \ge 0\\). \\(\phi _ t\\) 是关于 \\(t\\) 的非增凸函数.

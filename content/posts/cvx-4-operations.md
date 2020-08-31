@@ -137,7 +137,7 @@ __线性分式函数 (linear-fractional function)__ 由透视函数和仿射函�
 
 ## 函数运算
 
-下面介绍一些保持函数凹凸性的运算.
+下面介绍一些保持函数凸性的运算.
 
 ### 非负加权求和
 
@@ -386,7 +386,7 @@ __线性分式函数 (linear-fractional function)__ 由透视函数和仿射函�
 
 ### 最小化
 
-如果 \\(f\\) 是关于 \\((x, y)\\) 的凸函数 并且 \\(C\\) 是非空凸集, 那么
+如果 \\(f\\) 是关于 \\((x, y)\\) 的凸函数并且 \\(C\\) 是非空凸集, 那么
 
 \\[g(x) = \inf _ {y \in C} \\{f(x, y)\\}\\]
 
@@ -483,3 +483,56 @@ __线性分式函数 (linear-fractional function)__ 由透视函数和仿射函�
     \\[\sum _ {i=1} ^ n {u _ i \log(\boldsymbol{1} ^ T u / u _ i)} = (\boldsymbol{1} ^ T u) \sum _ {i=1} ^ n {z _ i \log(1 / z _ i)}\\]
 
     其中 \\(z = u / (\boldsymbol{1} ^ T u)\\) 是归一化向量或概率分布. 归一化熵是凹函数, 它的值等于 \\((\boldsymbol{1} ^ T u)\\) 乘以熵.
+
+
+类似地, 下面是一些保持函数拟凸性的运算.
+
+### 非负加权最大
+
+对于权重 \\(w _ i \ge 0\\), 拟凸函数 \\(f _ i\\) 的非负加权最大
+
+\\[f = \max {w _ 1 f _ 1, \dots, w _ m f _ m}\\]
+
+也是拟凸函数. 这个性质可以扩展到一般的逐点上确界. 如果 \\(g(x, y)\\) 对于任意 \\(y \in C\\) 是关于 \\(x\\) 的拟凸函数且 \\(w(y) \ge 0\\), 那么函数
+
+\\[f(x) = \sup _ {y \in C} \\{w(y) g(x, y)\\}\\]
+
+也是关于 \\(x\\) 的拟凸函数.
+
+<details>
+    <summary>证明: 拟凸函数的非负加权最大也是拟凸函数</summary>
+    假设 \(g(x, y)\) 对于任意 \(y \in C\) 是关于 \(x\) 的拟凸函数且 \(w(y) \ge 0\). \(f(x)\) 是拟凸函数, 因为它的 \(\alpha\) - 下水平集 \(S _ {\alpha} = \{x \mid w(y)g(x,y) \le \alpha, \forall y \in C\}\) 是所有 \(y \in C\) 对应的凸函数 \(w(y)g(x, y)\) 的 \(\alpha\) - 下水平集的交集.
+</details>
+
+- 最大广义特征值
+
+    对称矩阵 \\(X, Y\\), \\(Y \succ 0\\) 的最大广义特征值定义为
+
+    \\[\lambda _ {\max} (X, Y) = \sup _ {u \ne 0} \frac{u ^ T X u}{u ^ T Y u} = \sup\\{\lambda \mid \det(\lambda Y - X) = 0\\}\\]
+
+    它是 \\((X, Y)\\) 的线性分式, 因此是 \\((X, Y)\\) 的拟凸函数, 其上确界也是拟凸函数.
+
+### 复合
+
+如果函数 \\(g \colon \mathbb{R} ^ n \to \mathbb{R}\\) 是拟凸函数, 且函数 \\(h \colon \mathbb{R} \to \mathbb{R}\\) 是非减的, 那么复合函数 \\(f = h \circ g\\) 是拟凸函数. 比如, 如果 \\(f\\) 是拟凸函数, 那么 \\(g _ 1(x) = f(Ax + b)\\) 是拟凸函数, \\(g _ 2(x) = f((Ax + b) / (c ^ T x + d))\\) 在集合 \\(\\{x \mid c ^ T x + d > 0, (Ax + b) / (c ^ T x + d) \in \mathrm{dom}(f)\\}\\) 上是拟凸函数.
+
+### 最小化
+
+如果 \\(f\\) 是关于 \\((x, y)\\) 的拟凸函数并且 \\(C\\) 是非空凸集, 那么
+
+\\[g(x) = \inf _ {y \in C} \\{f(x, y)\\}\\]
+
+在 \\(\mathrm{dom}(g) = \\{x \mid (x, y) \in \mathrm{dom}(f), \exists y \in C\\}\\) 上是关于 \\(x\\) 的拟凸函数.
+
+<details>
+    <summary>证明: 在非空凸集上最小化得到凸函数</summary>
+    假设 \(f\) 是关于 \((x, y)\) 的拟凸函数并且 \(C\) 是非空凸集. 假设 \(x _ 1, x _ 2\) 是 \(g\) 的 \(\alpha\) - 下水平集中的任意两点. 对于任意 \(\epsilon > 0\), 都存在 \(y _ 1, y _ 2\) 满足
+    \begin{equation}
+        f(x _ 1, y _ 1) \le \alpha + \epsilon, \quad f(x _ 2, y _ 2) \le \alpha + \epsilon
+    \end{equation}
+    根据拟凸函数的定义可知, 对于任意 \(0 \le \theta \le 1\) 有
+    \begin{equation}
+        f(\theta x _ 1 + (1 - \theta) x _ 2, \theta y _ 1 + (1 - \theta) y _ 2) \le \alpha + \epsilon
+    \end{equation}
+    上式对任意 \(\epsilon > 0\) 均成立, 所以 \(g(\theta x _ 1 + (1 - \theta) x _ 2) \le \alpha\), 即 \(\{x \mid g(x) \le \alpha\}\) 是凸集.
+</details>
